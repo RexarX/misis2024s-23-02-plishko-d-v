@@ -11,4 +11,5 @@ int main() {
 	}
 
 	std::cout << cnt;
+	return 0;
 }
