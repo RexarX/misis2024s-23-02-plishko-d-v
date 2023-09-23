@@ -23,4 +23,6 @@ int main()
  
 		std::cout << k << std::endl;
 	}
+
+return 0;
 }
