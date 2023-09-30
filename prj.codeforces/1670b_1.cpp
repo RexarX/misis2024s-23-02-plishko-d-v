@@ -28,10 +28,10 @@ int alg(std::string& s, const std::string& symbols, int len, int cnt) {
  
 int main() {
 	std::ios::sync_with_stdio(false);
+	std::cin.tie(NULL);
 	int t, n, k;
 	std::string s, symbols;
 	char symbol;
- 
 	std::cin >> t;
 	for (int i = 0; i < t; i++) {
 		symbols.clear();
