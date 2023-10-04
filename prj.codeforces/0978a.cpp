@@ -12,11 +12,10 @@ void duplicates(std::vector<int>& mas, int element) {
 
 int main()
 {
-	int n;
+	int n, element;
 	std::cin >> n;
 	std::vector<int> mas;
 	for (int i = 0; i < n; i++) {
-		int element;
 		std::cin >> element;
 		duplicates(mas, element);
 		mas.push_back(element);
