@@ -20,9 +20,7 @@ int main()
 			max = cur;
 		}
 		else {
-			if (cur > max) {
-				max = cur;
-			}
+			max = std::max(cur, max)
 		}
 	}
 
