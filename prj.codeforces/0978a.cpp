@@ -23,7 +23,7 @@ int main()
 
 	std::cout << mas.size() << std::endl;
 	for (int i = 0; i < mas.size(); i++) {
-		std::cout << mas[i] << " ";
+		std::cout << mas[i] << ' ';
 	}
 
 	return 0;
