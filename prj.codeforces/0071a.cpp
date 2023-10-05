@@ -8,7 +8,7 @@ std::string alg(std::string word) {
 		return word[0] + std::to_string(len - 2) + word[len - 1];
 	}
 
-		return word;
+	return word;
 }
 
 int main()
