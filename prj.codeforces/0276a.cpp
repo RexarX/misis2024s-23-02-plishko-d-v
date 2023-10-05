@@ -4,9 +4,8 @@ int joy(int f, int t, int k) {
 	if (t > k) {
 		return f - t + k;
 	}
-	else {
+
 		return f;
-	}
 }
 
 int main()
