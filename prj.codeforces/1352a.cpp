@@ -8,9 +8,8 @@ bool isRound(int number) {
 	if (1 <= number && number <= 9 || str.substr(1) == std::string(str.length(), '0')) {
 		return true;
 	}
-	else {
+
 		return false;
-	}
 }
 
 std::vector<int> decompose(int num) {
