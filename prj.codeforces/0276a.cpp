@@ -5,7 +5,7 @@ int joy(int f, int t, int k) {
 		return f - t + k;
 	}
 
-		return f;
+	return f;
 }
 
 int main()
