@@ -9,7 +9,7 @@ bool isRound(int number) {
 		return true;
 	}
 
-		return false;
+	return false;
 }
 
 std::vector<int> decompose(int num) {
