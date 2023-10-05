@@ -20,10 +20,9 @@ int alg(std::string& s, const std::string& symbols, int len, int cnt) {
 	if (s.length() == len) {
 		return cnt;
 	}
-	else {
-		cnt++;
-		return alg(s, symbols, s.length(), cnt);
-	}
+	
+	cnt++;
+	return alg(s, symbols, s.length(), cnt);
 }
  
 int main() {
