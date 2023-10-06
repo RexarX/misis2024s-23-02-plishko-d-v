@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 
+
 int main()
 {
 	int n, cnt(0);
