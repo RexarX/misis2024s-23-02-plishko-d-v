@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 
+
 void duplicates(std::vector<int>& mas, int element) {
 	auto it = std::find(mas.begin(), mas.end(), element);
 	if (it != mas.end())
