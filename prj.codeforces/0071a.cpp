@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 
+
 std::string alg(std::string word) {
 	int len = word.length();
 	if (len > 10) {
