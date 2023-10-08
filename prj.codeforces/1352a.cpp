@@ -17,7 +17,7 @@ std::vector<int> decompose(int num) {
 	int calc;
 	int len = std::to_string(num).length();
 	for (int i = 1; i < std::pow(10, len); i *= 10) {
-		calc = num / (10 * i / 10) % 10;
+		calc = num / i % 10;
 		if (calc != 0) {
 			result.push_back(calc * i);
 		}
