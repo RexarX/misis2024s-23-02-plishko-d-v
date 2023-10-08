@@ -21,8 +21,7 @@ int alg(std::string& s, const std::string& symbols, int len, int cnt) {
 		return cnt;
 	}
 	
-	cnt++;
-	return alg(s, symbols, s.length(), cnt);
+	return alg(s, symbols, s.length(), ++cnt);
 }
  
 int main() 
