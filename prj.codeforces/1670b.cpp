@@ -19,7 +19,8 @@ int alg(std::string& s, const std::vector<char>& symbols, int n) {
 	return res;
 }
  
-int main() {
+int main() 
+{
 	std::ios::sync_with_stdio(false);
 	std::cin.tie(nullptr);
 	int t, n, k;
