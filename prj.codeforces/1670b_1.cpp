@@ -25,7 +25,8 @@ int alg(std::string& s, const std::string& symbols, int len, int cnt) {
 	return alg(s, symbols, s.length(), cnt);
 }
  
-int main() {
+int main() 
+{
 	std::ios::sync_with_stdio(false);
 	std::cin.tie(nullptr);
 	int t, n, k;
