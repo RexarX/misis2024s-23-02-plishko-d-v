@@ -38,7 +38,7 @@ int main()
 
 	for (int i = 0; i < array.size(); i++) {
 		if (isRound(array[i])) {
-			std::cout << 1 << std::endl;
+			std::cout << 1 << '\n';
 			std::cout << array[i] << std::endl;
 		}
 		else {
