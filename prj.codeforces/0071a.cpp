@@ -21,7 +21,7 @@ int main()
 	for (int i = 0; i < n; i++) {
 		std::cin >> word;
 		words.push_back(alg(word));
-		std::cout << words[i] << std::endl;
+		std::cout << words[i] << '\n';
 	}
 
 	return 0;
