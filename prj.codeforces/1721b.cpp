@@ -9,7 +9,7 @@ int main()
 		std::cin >> n >> m >> sx >> sy >> d;
 		if (((sx + d >= n) && (sx - d <= 1)) || ((sy + d >= m) && (sy - d <= 1)) || 
 		((sx - d <= 1) && (sy - d <= 1)) || ((sx + d >= n) && (sy + d >= m))) {
-				std::cout << "-1" << std::endl;
+				std::cout << "-1" << '\n';
 		}
 		else {
 				std::cout << (n - 1) + (m - 1) << '\n';
