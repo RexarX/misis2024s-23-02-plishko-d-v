@@ -12,7 +12,7 @@ int main()
 				std::cout << "-1" << std::endl;
 		}
 		else {
-				std::cout << (n - 1) + (m - 1) << std::endl;
+				std::cout << (n - 1) + (m - 1) << '\n';
 		}
 	}
 
