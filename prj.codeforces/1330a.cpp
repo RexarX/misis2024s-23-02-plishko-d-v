@@ -21,7 +21,7 @@ int main()
 			k++;
 		}
  
-		std::cout << k << std::endl;
+		std::cout << k << '\n';
 	}
 
 	return 0;
