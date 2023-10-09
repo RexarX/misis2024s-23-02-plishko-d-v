@@ -2,7 +2,7 @@
 #include <algorithm>
 
 
-int joy(int f, int t, int k) {
+int joy(const int& f, const int& t, const int& k) {
 	if (t > k) {
 		return f - t + k;
 	}
