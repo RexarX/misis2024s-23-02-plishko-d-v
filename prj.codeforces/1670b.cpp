@@ -4,7 +4,7 @@
 #include <algorithm>
  
  
-int alg(std::string& s, const std::vector<char>& symbols, int n) {
+int alg(const std::string& s, const std::vector<char>& symbols, int n) {
 	int res(0), last(0);
 	for (int i = 0; i < n; i++) {
 		if (std::find(symbols.begin(), symbols.end(), s[i]) != symbols.end()) {
