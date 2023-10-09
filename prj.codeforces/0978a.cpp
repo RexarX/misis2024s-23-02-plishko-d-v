@@ -22,7 +22,7 @@ int main()
 		mas.push_back(element);
 	}
 
-	std::cout << mas.size() << std::endl;
+	std::cout << mas.size() << '\n';
 	for (int i = 0; i < mas.size(); i++) {
 		std::cout << mas[i] << ' ';
 	}
