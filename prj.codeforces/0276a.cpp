@@ -12,19 +12,19 @@ int joy(const int& f, const int& t, const int& k) {
 
 int main()
 {
-	int n, k, f, t, max(0), cur;
+	int n, k, f, t, mx(0), cur;
 	std::cin >> n >> k;
 	for (int i = 0; i < n; i++) {
 		std::cin >> f >> t;
 		cur = joy(f, t, k);
 		if (i == 0) {
-			max = cur;
+			mx = cur;
 		}
 		else {
-			max = std::max(cur, max)
+			mx = std::max(cur, max)
 		}
 	}
 
-	std::cout << max;
+	std::cout << mx;
 	return 0;
 }
