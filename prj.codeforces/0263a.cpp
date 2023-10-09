@@ -5,8 +5,7 @@
 int main()
 {
 	std::array<std::array<int, 5>, 5> mas;
-	int row;
-	int col;
+	int row, col;
 	for (int i = 0; i < 5; i++) {
 		for (int j = 0; j < 5; j++) {
 			std::cin >> mas[i][j];
