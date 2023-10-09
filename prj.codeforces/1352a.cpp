@@ -48,7 +48,7 @@ int main()
 				std::cout << current[j] << ' ';
 			}
 
-			std::cout << std::endl;
+			std::cout << '\n';
 		}
 	}
 
