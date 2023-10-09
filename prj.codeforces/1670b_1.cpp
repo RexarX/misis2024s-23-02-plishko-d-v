@@ -2,11 +2,11 @@
 #include <string>
  
  
-bool contains(const std::string& str, char& targetChar) {
+bool contains(const std::string& str, const char& targetChar) {
 	return str.find(targetChar) != std::string::npos;
 }
  
-int alg(std::string& s, const std::string& symbols, int len, int cnt) {
+int alg(std::string& s, const std::string& symbols, const int& len, int cnt) {
 	int i(0);
 	while (i != s.length() - 1) {
 		if (contains(symbols, s[i + 1])) {
