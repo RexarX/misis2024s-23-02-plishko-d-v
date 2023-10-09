@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <vector>
 
 
 std::string alg(const std::string& word) {
@@ -16,12 +15,10 @@ int main()
 {
 	int n;
 	std::string word;
-	std::vector<std::string> words;
 	std::cin >> n;
 	for (int i = 0; i < n; i++) {
 		std::cin >> word;
-		words.push_back(alg(word));
-		std::cout << words[i] << '\n';
+		std::cout << alg(word) << '\n';
 	}
 
 	return 0;
