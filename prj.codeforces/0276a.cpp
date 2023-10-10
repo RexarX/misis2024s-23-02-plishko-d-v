@@ -21,7 +21,7 @@ int main()
 			mx = cur;
 		}
 		else {
-			mx = std::max(cur, max)
+			mx = std::max(cur, mx)
 		}
 	}
 
