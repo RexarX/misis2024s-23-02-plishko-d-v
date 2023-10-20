@@ -9,10 +9,11 @@ void alg(std::vector<std::string>& v, const int& n) {
     if (std::count(v[i].begin(), v[i].end(), '*') == 2) {
       v[n - 1] = v[i];
       break;
-    } 
+    }
 
-    if (std::count(v[i].begin(), v[i].end(), '*') == 1) {
-      reverse(v[i].begin(), v[i].end());
+    int pos = v[i].find('*');
+    if (pos != std::string::npos) {
+      // v[i] = 
     }
   }
 }
@@ -25,13 +26,14 @@ int main()
   std::cin >> t;
   for (int i = 0; i < t; i++) {
     std::cin >> n;
-    for (int j = 0; i < n; j++) {
+    for (int j = 0; j < n; j++) {
       std::cin >> row;
       v.push_back(row);
     }
 
-    for (int j = 0; i < n; j++) {
-      std::cout << v[i] << '\n';
+    alg(v, n);
+    for (int j = 0; j < n; j++) {
+      std::cout << v[j] << '\n';
     }
     
     v.clear();
