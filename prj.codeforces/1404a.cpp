@@ -2,7 +2,6 @@
 #include <string>
 #include <algorithm>
 
-
 bool isBalanced(std::string& s, const int& n, const int& k) {
 	for (int i = 0; i < n; i++) {
 		if (s[i % k] == '?') {
@@ -13,7 +12,6 @@ bool isBalanced(std::string& s, const int& n, const int& k) {
 			return false;
 		}
 	}
-
 	if (std::count(s.begin(), s.end() - n + k, '0') <= k / 2 && std::count(s.begin(), s.end() - n + k, '1') <= k / 2) {
 		return true;
 	}
@@ -37,6 +35,5 @@ int main()
 			std::cout << "NO" << '\n';
 		}
 	}
-
 	return 0;
 }
