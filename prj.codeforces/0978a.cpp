@@ -25,6 +25,5 @@ int main()
 	for (int i = 0; i < mas.size(); i++) {
 		std::cout << mas[i] << ' ';
 	}
-
 	return 0;
 }
