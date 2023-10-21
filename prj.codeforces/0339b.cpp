@@ -2,8 +2,7 @@
 
 int main()
 {
-	const long long int n, m;
-	long long int a, previous(1), result(0);
+	long long int n, m, a, previous(1), result(0);
 	std::cin >> n >> m;
 	for (int i = 0; i < m; i++) {
 		std::cin >> a;
