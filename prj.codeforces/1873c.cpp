@@ -2,7 +2,6 @@
 #include <string>
 #include <algorithm>
 
-
 int main()
 {
   int t;
@@ -18,9 +17,7 @@ int main()
         }
       }
     }
-
     std::cout << cnt << '\n';
   }
-
   return 0;
 }
