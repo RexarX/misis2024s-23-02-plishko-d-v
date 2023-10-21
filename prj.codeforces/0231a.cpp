@@ -1,6 +1,5 @@
 #include <iostream>
 
-
 int main() {
 	int n, a, b, c, cnt(0);
 	std::cin >> n;
@@ -10,7 +9,6 @@ int main() {
 			cnt++;
 		}
 	}
-
 	std::cout << cnt;
 	return 0;
 }
