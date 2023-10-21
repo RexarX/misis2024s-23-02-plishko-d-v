@@ -3,7 +3,6 @@
 #include <vector>
 #include <algorithm>
  
- 
 int alg(const std::string& s, const std::vector<char>& symbols, const int& n) {
 	int res(0), last(0);
 	for (int i = 0; i < n; i++) {
@@ -12,7 +11,6 @@ int alg(const std::string& s, const std::vector<char>& symbols, const int& n) {
 			last = i;
 		}
 	}
- 
 	return res;
 }
  
@@ -24,7 +22,6 @@ int main()
 	std::string s;
 	std::vector<char> symbols;
 	char symbol;
- 
 	std::cin >> t;
 	for (int i = 0; i < t; i++) {
 		symbols.clear();
@@ -35,9 +32,7 @@ int main()
 			std::cin >> symbol;
 			symbols.push_back(symbol);
 		}
- 
 		std::cout << alg(s, symbols, n) << '\n';
 	}
- 
 	return 0;
 }
