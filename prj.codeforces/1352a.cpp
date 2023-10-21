@@ -3,13 +3,11 @@
 #include <vector>
 #include <cmath>
 
-
 bool isRound(const int& number) {
 	std::string str = std::to_string(number);
 	if (1 <= number && number <= 9 || str.substr(1) == std::string(str.length(), '0')) {
 		return true;
 	}
-
 	return false;
 }
 
@@ -23,7 +21,6 @@ std::vector<int> decompose(const int& num) {
 			result.push_back(calc * i);
 		}
 	}
-
 	return result;
 }
 
@@ -36,7 +33,6 @@ int main()
 		std::cin >> input;
 		array.push_back(input);
 	}
-
 	for (int i = 0; i < array.size(); i++) {
 		if (isRound(array[i])) {
 			std::cout << 1 << '\n';
@@ -48,10 +44,8 @@ int main()
 			for (int j = 0; j < current.size(); j++) {
 				std::cout << current[j] << ' ';
 			}
-
 			std::cout << '\n';
 		}
 	}
-
 	return 0;
 }
