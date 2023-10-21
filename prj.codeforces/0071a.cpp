@@ -11,8 +11,8 @@ std::string alg(const std::string& word) {
 
 int main()
 {
-	const int n;
-	const std::string word;
+	int n;
+	std::string word;
 	std::cin >> n;
 	for (int i = 0; i < n; i++) {
 		std::cin >> word;
