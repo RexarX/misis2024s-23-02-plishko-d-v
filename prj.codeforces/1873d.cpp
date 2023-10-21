@@ -1,6 +1,5 @@
 #include <iostream>
 
-
 int main()
 {
 	int t, n, k, cnt, mx;
@@ -17,9 +16,7 @@ int main()
 				cnt++;
 			}
 		}
-
 		std::cout << cnt << '\n';
 	}
-
 	return 0;
 }
