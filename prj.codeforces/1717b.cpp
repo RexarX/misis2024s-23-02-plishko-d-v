@@ -1,6 +1,5 @@
 #include <iostream>
 
-
 int main()
 {
 	int t, n, k, r, c;
@@ -16,10 +15,8 @@ int main()
 					std::cout << '.';
 				}
 			}
-
     std::cout << '\n';
 		}
 	}
-
 	return 0;
 }
