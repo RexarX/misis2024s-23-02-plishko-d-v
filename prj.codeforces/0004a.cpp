@@ -2,7 +2,7 @@
 
 int main()
 {
-	const int w;
+	int w;
 	std::cin >> w;
 	if (w > 3 && w % 2 == 0) {
 		std::cout << "YES";
