@@ -1,12 +1,10 @@
 #include <iostream>
 #include <algorithm>
 
-
 int joy(const int& f, const int& t, const int& k) {
 	if (t > k) {
 		return f - t + k;
 	}
-
 	return f;
 }
 
@@ -24,7 +22,6 @@ int main()
 			mx = std::max(cur, mx);
 		}
 	}
-
 	std::cout << mx;
 	return 0;
 }
