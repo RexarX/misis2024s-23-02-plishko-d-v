@@ -1,6 +1,5 @@
 #include <iostream>
 
-
 int main()
 {
 	int year, ones, tens, hds, tds;
@@ -16,7 +15,6 @@ int main()
 			flag = false;
 		}
 	}
-
 	std::cout << year;
 	return 0;
 }
