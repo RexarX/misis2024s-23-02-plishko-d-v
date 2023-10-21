@@ -13,7 +13,6 @@ int main()
 			cnt++;
 		}
 	}
-
 	std::cout << cnt;
 	return 0;
 }
