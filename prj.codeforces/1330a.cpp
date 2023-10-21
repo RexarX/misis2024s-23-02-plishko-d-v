@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
  
- 
 int main()
 {
 	int x, n, t, element;
@@ -13,15 +12,12 @@ int main()
 			std::cin >> element;
 			check[--element] = true;
 		}
- 
 		int k(0), cnt(0);
 		while (cnt < x || check[k]) {
 			cnt += !check[k];
 			k++;
 		}
- 
 		std::cout << k << '\n';
 	}
-
 	return 0;
 }
