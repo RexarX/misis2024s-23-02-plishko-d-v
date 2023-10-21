@@ -1,6 +1,5 @@
 #include <iostream>
 
- 
 int main()
 {
 	int w;
@@ -11,6 +10,5 @@ int main()
 	else {
 		std::cout << "NO";
 	}
-
 	return 0;
 }
