@@ -2,7 +2,7 @@
 #include <string>
 
 std::string alg(const std::string& word) {
-	int len = word.length();
+	const int len = word.length();
 	if (len > 10) {
 		return word[0] + std::to_string(len - 2) + word[len - 1];
 	}
@@ -11,8 +11,8 @@ std::string alg(const std::string& word) {
 
 int main()
 {
-	int n;
-	std::string word;
+	const int n;
+	const std::string word;
 	std::cin >> n;
 	for (int i = 0; i < n; i++) {
 		std::cin >> word;
