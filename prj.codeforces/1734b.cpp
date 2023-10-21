@@ -1,6 +1,5 @@
 #include <iostream>
 
-
 int main()
 {
 	int t, n;
@@ -11,10 +10,8 @@ int main()
 			for (int j = 1; j <= i; j++) {
 				std::cout << (j == 1 || j == i) << ' ';
 			}
-
 			std::cout << '\n';
 		}
 	}
-
 	return 0;
 }
