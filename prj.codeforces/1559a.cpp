@@ -1,13 +1,11 @@
 #include <iostream>
 #include <vector>
 
-
 int alg(const std::vector<int>& mas, const int& n){
   int res = mas[0];
   for (int i = 1; i < n; i++) {
     res &= mas[i];
   }
-
   return res;
 }
 
@@ -23,9 +21,7 @@ int main()
       std::cin >> element;
       mas.push_back(element);
     }
-
     std::cout << alg(mas, n) << '\n';
   }
-
   return 0;
 }
