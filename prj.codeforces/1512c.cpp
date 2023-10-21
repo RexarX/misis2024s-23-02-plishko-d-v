@@ -2,14 +2,12 @@
 #include <string>
 #include <algorithm>
 
-
 bool isPalindrome(const std::string& s) {
 	std::string reversed = s;
 	std::reverse(reversed.begin(), reversed.end());
 	if (s == reversed) {
 		return true;
 	}
-
 	return false;
 }
 
@@ -27,7 +25,6 @@ int main()
 				s[j] = s[len - j - 1];
 			}
 		}
-
 		a -= std::count(s.begin(), s.end(), '0');
 		b -= std::count(s.begin(), s.end(), '1');
 		for (int j = 0; j <= len / 2; j++) {
@@ -52,7 +49,6 @@ int main()
 				}
 			}
 		}
-
 		if (isPalindrome(s) && a == 0 && b == 0) {
 			std::cout << s << '\n';
 		}
@@ -60,6 +56,5 @@ int main()
 			std::cout << "-1" << '\n';
 		}
 	}
-
 	return 0;
 }
