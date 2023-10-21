@@ -10,8 +10,7 @@ int joy(const int& f, const int& t, const int& k) {
 
 int main()
 {
-	const int n, k;
-	int f, t, mx(0), cur;
+	int n, k, f, t, mx(0), cur;
 	std::cin >> n >> k;
 	for (int i = 0; i < n; i++) {
 		std::cin >> f >> t;
