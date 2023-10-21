@@ -1,6 +1,5 @@
 #include <iostream>
 
-
 int main()
 {
 	int t, n, m, sx, sy, d;
@@ -15,6 +14,5 @@ int main()
 				std::cout << (n - 1) + (m - 1) << '\n';
 		}
 	}
-
 	return 0;
 }
