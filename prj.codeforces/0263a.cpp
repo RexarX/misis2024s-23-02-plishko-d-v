@@ -1,7 +1,6 @@
 #include <iostream>
 #include <array>
 
-
 int main()
 {
 	std::array<std::array<int, 5>, 5> mas;
@@ -15,7 +14,6 @@ int main()
 			}
 		}
 	}
-
 	std::cout << std::abs(row - 2) + std::abs(col - 2);
 	return 0;
 }
