@@ -1,11 +1,10 @@
 #include <iostream>
 #include <string>
  
- 
 bool contains(const std::string& str, const char& targetChar) {
 	return str.find(targetChar) != std::string::npos;
 }
- 
+
 int alg(std::string& s, const std::string& symbols, const int& len, int cnt) {
 	int i(0);
 	while (i != s.length() - 1) {
@@ -16,11 +15,9 @@ int alg(std::string& s, const std::string& symbols, const int& len, int cnt) {
 			i++;
 		}
 	}
- 
 	if (s.length() == len) {
 		return cnt;
 	}
-	
 	return alg(s, symbols, s.length(), ++cnt);
 }
  
@@ -41,9 +38,7 @@ int main()
 			std::cin >> symbol;
 			symbols += symbol;
 		}
- 
 		std::cout << alg(s, symbols, n, 0) << '\n';
 	}
- 
 	return 0;
 }
