@@ -1,5 +1,4 @@
 OK: file codeforces.id is correct
-OK: folder prj.codeforces structure is correct
-ERROR: file CMakeLists.txt is absent
-ERROR: file prj.codeforces/CMakeLists.txt is absent
-ERROR: CMake generator failed
+ERROR: invalid file name 731a
+OK: CMake generator successed
+OK: CMake build (MSVC x64) successed
