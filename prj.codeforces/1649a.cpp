@@ -3,7 +3,7 @@
 #include <algorithm>
 
 int main() {
-	int t, n, right, left, a;
+	int t, n, right, left;
 	std::array<bool, 100> mas{};
 	std::cin >> t;
 	for (int i = 0; i < t; i++) {
