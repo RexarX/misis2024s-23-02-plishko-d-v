@@ -29,10 +29,10 @@ int main()
 		std::cin >> n >> k;
 		std::cin >> s;
 		if (isBalanced(s, n, k)) {
-			std::cout << "YES" << '\n';
+			std::cout << "YES\n";
 		}
 		else {
-			std::cout << "NO" << '\n';
+			std::cout << "NO\n";
 		}
 	}
 	return 0;
