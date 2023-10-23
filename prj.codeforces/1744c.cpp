@@ -14,7 +14,7 @@ int main() {
     for (int i = 0; i < t; i++) {
         std::cin >> n >> c;
         std::cin >> s;
-        std::cout << alg(symbols, n, k) << '\n';
+        std::cout << alg(symbols, n, c) << '\n';
     }
     return 0;
 }
