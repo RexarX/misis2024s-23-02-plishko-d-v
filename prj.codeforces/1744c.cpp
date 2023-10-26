@@ -3,7 +3,7 @@
 #include <algorithm>
 
 int alg(std::string& s, const int& n, const int& c) {
-  int result;
+  int result(0);
   return result;
 }
 
@@ -14,7 +14,7 @@ int main() {
   for (int i = 0; i < t; i++) {
     std::cin >> n >> c;
     std::cin >> s;
-    std::cout << alg(symbols, n, c) << '\n';
+    std::cout << alg(s, n, c) << '\n';
   }
   return 0;
 }
