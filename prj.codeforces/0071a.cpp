@@ -4,7 +4,7 @@
 std::string alg(const std::string& word) {
 	const int len = word.length();
 	if (len > 10) {
-		return word.at(0) + std::to_string(len - 2) + word.at(len - 1);
+		return word[0] + std::to_string(len - 2) + word[len - 1];
 	}
 	return word;
 }
