@@ -7,8 +7,8 @@ int main()
 	int row, col;
 	for (int i = 0; i < 5; i++) {
 		for (int j = 0; j < 5; j++) {
-			std::cin >> mas.at(i).at(j);
-			if (mas.at(i).at(j) == 1) {
+			std::cin >> mas[i][j];
+			if (mas[i][j] == 1) {
 				row = i;
 				col = j;
 			}
