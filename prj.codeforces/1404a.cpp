@@ -4,11 +4,11 @@
 
 bool isBalanced(std::string& s, const int& n, const int& k) {
 	for (int i = 0; i < n; i++) {
-		if (s[i % k] == '?') {
-			s[i % k] = s[i];
+		if (s.at(i % k) == '?') {
+			s.at(i % k) = s.at(i);
 		}
 
-		if (s[i] != s[i % k] && s[i] != '?') {
+		if (s.at(i) != s.at(i % k) && s.at(i) != '?') {
 			return false;
 		}
 	}
