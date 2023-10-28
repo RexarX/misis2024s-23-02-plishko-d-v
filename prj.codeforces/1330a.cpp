@@ -13,8 +13,8 @@ int main()
 			check[--element] = true;
 		}
 		int k(0), cnt(0);
-		while (cnt < x || check.at(k)) {
-			cnt += !check.at(k);
+		while (cnt < x || check[k]) {
+			cnt += !check[k];
 			k++;
 		}
 		std::cout << k << '\n';
