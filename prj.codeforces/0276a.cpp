@@ -1,5 +1,4 @@
 #include <iostream>
-#include <algorithm>
 
 int joy(const int& f, const int& t, const int& k) {
 	if (t > k) {
