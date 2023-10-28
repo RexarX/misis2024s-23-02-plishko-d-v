@@ -34,15 +34,15 @@ int main()
 		array.push_back(input);
 	}
 	for (int i = 0; i < array.size(); i++) {
-		if (isRound(array.at(i))) {
+		if (isRound(array[i])) {
 			std::cout << 1 << '\n';
-			std::cout << array.at(i) << '\n';
+			std::cout << array[i] << '\n';
 		}
 		else {
-			current = decompose(array.at(i));
+			current = decompose(array[i]);
 			std::cout << current.size() << '\n';
 			for (int j = 0; j < current.size(); j++) {
-				std::cout << current.at(j) << ' ';
+				std::cout << current[j] << ' ';
 			}
 			std::cout << '\n';
 		}
