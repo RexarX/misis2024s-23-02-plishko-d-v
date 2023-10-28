@@ -10,7 +10,7 @@ int main()
 		std::vector<bool> check(201);
 		for (int j = 0; j < n; j++) {
 			std::cin >> element;
-			check[--element] = true;
+			check.at(--element) = true;
 		}
 		int k(0), cnt(0);
 		while (cnt < x || check.at(k)) {
