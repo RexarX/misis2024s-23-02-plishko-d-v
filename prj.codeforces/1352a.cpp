@@ -29,11 +29,11 @@ int main()
 	int t, input;
 	std::vector<int> array, current;
 	std::cin >> t;
-	for (int i = 0; i < t; i++) {
+	for (int i = 0; i < t; ++i) {
 		std::cin >> input;
 		array.push_back(input);
 	}
-	for (int i = 0; i < array.size(); i++) {
+	for (int i = 0; i < array.size(); ++i) {
 		if (isRound(array[i])) {
 			std::cout << 1 << '\n';
 			std::cout << array[i] << '\n';
@@ -41,7 +41,7 @@ int main()
 		else {
 			current = decompose(array[i]);
 			std::cout << current.size() << '\n';
-			for (int j = 0; j < current.size(); j++) {
+			for (int j = 0; j < current.size(); ++j) {
 				std::cout << current[j] << ' ';
 			}
 			std::cout << '\n';

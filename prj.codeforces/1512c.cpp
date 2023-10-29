@@ -16,18 +16,18 @@ int main()
 	int t, a, b, len;
 	std::string s;
 	std::cin >> t;
-	for (int i = 0; i < t; i++) {
+	for (int i = 0; i < t; ++i) {
 		std::cin >> a >> b;
 		std::cin >> s;
 		len = a + b;
-		for (int j = 0; j < len; j++) {
+		for (int j = 0; j < len; ++j) {
 			if (s[j] == '?') {
 				s[j] = s[len - j - 1];
 			}
 		}
 		a -= std::count(s.begin(), s.end(), '0');
 		b -= std::count(s.begin(), s.end(), '1');
-		for (int j = 0; j <= len / 2; j++) {
+		for (int j = 0; j <= len / 2; ++j) {
 			if (s[j] == '?' && j != len - j - 1) {
 				if (a > 1) {
 					s[j] = s[len - j - 1] = '0';
@@ -41,11 +41,11 @@ int main()
 			else if (s[j] == '?') {
 				if (a) {
 					s[j] = '0';
-					a--;
+					--a;
 				}
 				else {
 					s[j] = '1';
-					b--;
+					--b;
 				}
 			}
 		}

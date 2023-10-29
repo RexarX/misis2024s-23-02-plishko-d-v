@@ -6,7 +6,7 @@ int main()
 	bool flag = true;
 	std::cin >> year;
 	while (flag) {
-		year++;
+		++year;
 		ones = year % 10;
 		tens = year / 10 % 10;
 		hds = year / 100 % 10;

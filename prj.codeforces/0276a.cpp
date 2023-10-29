@@ -11,7 +11,7 @@ int main()
 {
 	int n, k, f, t, mx(0), cur;
 	std::cin >> n >> k;
-	for (int i = 0; i < n; i++) {
+	for (int i = 0; i < n; ++i) {
 		std::cin >> f >> t;
 		cur = joy(f, t, k);
 		if (i == 0) {

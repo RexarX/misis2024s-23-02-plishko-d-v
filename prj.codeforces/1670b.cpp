@@ -5,7 +5,7 @@
  
 int alg(const std::string& s, const std::vector<char>& symbols, const int& n) {
 	int res(0), last(0);
-	for (int i = 0; i < n; i++) {
+	for (int i = 0; i < n; ++i) {
 		if (std::find(symbols.begin(), symbols.end(), s[i]) != symbols.end()) {
 			res = std::max(res, i - last);
 			last = i;
@@ -23,12 +23,12 @@ int main()
 	std::vector<char> symbols;
 	char symbol;
 	std::cin >> t;
-	for (int i = 0; i < t; i++) {
+	for (int i = 0; i < t; ++i) {
 		symbols.clear();
 		std::cin >> n;
 		std::cin >> s;
 		std::cin >> k;
-		for (int j = 0; j < k; j++) {
+		for (int j = 0; j < k; ++j) {
 			std::cin >> symbol;
 			symbols.push_back(symbol);
 		}

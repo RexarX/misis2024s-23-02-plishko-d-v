@@ -7,9 +7,9 @@ int main()
 	std::string word;
 	std::cin >> n;
 	std::cin >> word;
-	for (int i = 0; i < n - 2; i++) {
+	for (int i = 0; i < n - 2; ++i) {
 		if (word.substr(i, 3) == "xxx") {
-			cnt++;
+			++cnt;
 		}
 	}
 	std::cout << cnt;

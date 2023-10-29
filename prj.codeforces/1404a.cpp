@@ -3,7 +3,7 @@
 #include <algorithm>
 
 bool isBalanced(std::string& s, const int& n, const int& k) {
-	for (int i = 0; i < n; i++) {
+	for (int i = 0; i < n; ++i) {
 		if (s[i % k] == '?') {
 			s[i % k] = s[i];
 		}
@@ -25,7 +25,7 @@ int main()
 	int t, n, k;
 	std::string s;
 	std::cin >> t;
-	for (int i = 0; i < t; i++) {
+	for (int i = 0; i < t; ++i) {
 		std::cin >> n >> k;
 		std::cin >> s;
 		if (isBalanced(s, n, k)) {

@@ -7,7 +7,7 @@ void alg(std::vector<std::string>& v, const int& n) {
   std::pair<int, int> pos1, pos2;
   pos1 = std::make_pair(-1, -1);
   pos2 = std::make_pair(-1, -1);
-  for (int i = 0; i < n; i++) {
+  for (int i = 0; i < n; ++i) {
     if (std::count(v[i].begin(), v[i].end(), '*') == 2) {
       if (i == n - 1) {
         v[0] = v[i];
@@ -53,14 +53,14 @@ int main()
   std::string row;
   std::vector<std::string> v;
   std::cin >> t;
-  for (int i = 0; i < t; i++) {
+  for (int i = 0; i < t; ++i) {
     std::cin >> n;
-    for (int j = 0; j < n; j++) {
+    for (int j = 0; j < n; ++j) {
       std::cin >> row;
       v.push_back(row);
     }
     alg(v, n);
-    for (int j = 0; j < n; j++) {
+    for (int j = 0; j < n; ++j) {
       std::cout << v[j] << '\n';
     }
     v.clear();

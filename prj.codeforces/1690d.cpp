@@ -4,18 +4,18 @@
 
 int alg(std::string& symbols, const int& n, const int& k) {
     int result, cnt(0);
-    for (int i = 0; i < k; i++) {
+    for (int i = 0; i < k; ++i) {
         if (symbols[i] == 'W') {
-            cnt++;
+            ++cnt;
         }
     }
     result = cnt;
-    for (int i = k; i < n; i++) {
+    for (int i = k; i < n; ++i) {
         if (symbols[i] == 'W') {
-            cnt++;
+            ++cnt;
         }
         if (symbols[i - k] == 'W') {
-            cnt--;
+            --cnt;
         }
         result = std::min(result, cnt);
     }
@@ -28,7 +28,7 @@ int main() {
     int t, k, n;
     std::string symbols;
     std::cin >> t;
-    for (int i = 0; i < t; i++) {
+    for (int i = 0; i < t; ++i) {
         std::cin >> n >> k;
         std::cin >> symbols;
         std::cout << alg(symbols, n, k) << '\n';

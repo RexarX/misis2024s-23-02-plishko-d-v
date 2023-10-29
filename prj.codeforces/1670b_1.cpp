@@ -29,12 +29,12 @@ int main()
 	std::string s, symbols;
 	char symbol;
 	std::cin >> t;
-	for (int i = 0; i < t; i++) {
+	for (int i = 0; i < t; ++i) {
 		symbols.clear();
 		std::cin >> n;
 		std::cin >> s;
 		std::cin >> k;
-		for (int j = 0; j < k; j++) {
+		for (int j = 0; j < k; ++j) {
 			std::cin >> symbol;
 			symbols += symbol;
 		}
