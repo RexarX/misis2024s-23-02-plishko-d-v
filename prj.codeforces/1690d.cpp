@@ -2,7 +2,7 @@
 #include <string>
 #include <algorithm>
 
-int alg(std::string& symbols, const int& n, const int& k) {
+int alg(std::string& symbols, const int& n, const int& k) noexcept {
     int result, cnt(0);
     for (int i = 0; i < k; ++i) {
         if (symbols[i] == 'W') {

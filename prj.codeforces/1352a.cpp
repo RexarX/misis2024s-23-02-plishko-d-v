@@ -3,7 +3,7 @@
 #include <vector>
 #include <cmath>
 
-bool isRound(const int& number) {
+bool isRound(const int& number) noexcept {
 	std::string str = std::to_string(number);
 	if (1 <= number && number <= 9 || str.substr(1) == std::string(str.length(), '0')) {
 		return true;
@@ -11,7 +11,7 @@ bool isRound(const int& number) {
 	return false;
 }
 
-std::vector<int> decompose(const int& num) {
+std::vector<int> decompose(const int& num) noexcept {
 	std::vector<int> result;
 	int calc;
 	int len = std::to_string(num).length();

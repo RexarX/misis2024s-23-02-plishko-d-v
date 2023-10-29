@@ -1,6 +1,6 @@
 #include <iostream>
 
-int joy(const int& f, const int& t, const int& k) {
+int joy(const int& f, const int& t, const int& k) noexcept {
 	if (t > k) {
 		return f - t + k;
 	}

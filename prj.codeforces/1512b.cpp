@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <vector>
 
-void alg(std::vector<std::string>& v, const int& n) {
+void alg(std::vector<std::string>& v, const int& n) noexcept {
   std::pair<int, int> pos1, pos2;
   pos1 = std::make_pair(-1, -1);
   pos2 = std::make_pair(-1, -1);

@@ -2,7 +2,7 @@
 #include <string>
 #include <algorithm>
 
-bool isPalindrome(const std::string& s) {
+bool isPalindrome(const std::string& s) noexcept {
 	std::string reversed = s;
 	std::reverse(reversed.begin(), reversed.end());
 	if (s == reversed) {

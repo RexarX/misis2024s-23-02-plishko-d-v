@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cmath>
 
-int tor(int& a, int& c) {
+int tor(int& a, int& c) noexcept {
 	int result(0), i(0);
 	while (a || c) {
 		result += (c % 3 - a % 3 + 3) % 3 * std::pow(3, i);

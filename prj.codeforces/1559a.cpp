@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 
-int alg(const std::vector<int>& mas, const int& n){
+int alg(const std::vector<int>& mas, const int& n) noexcept {
   int res = mas[0];
   for (int i = 1; i < n; ++i) {
     res &= mas[i];

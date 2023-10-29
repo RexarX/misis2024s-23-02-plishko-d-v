@@ -2,7 +2,7 @@
 #include <string>
 #include <algorithm>
 
-bool isBalanced(std::string& s, const int& n, const int& k) {
+bool isBalanced(std::string& s, const int& n, const int& k) noexcept {
 	for (int i = 0; i < n; ++i) {
 		if (s[i % k] == '?') {
 			s[i % k] = s[i];

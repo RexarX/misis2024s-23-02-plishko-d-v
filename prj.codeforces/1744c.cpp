@@ -2,7 +2,7 @@
 #include <string>
 #include <algorithm>
 
-int alg(std::string& s, const int& n, const int& c) {
+int alg(std::string& s, const int& n, const int& c) noexcept {
   int result(0);
   return result;
 }

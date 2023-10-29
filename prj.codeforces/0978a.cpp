@@ -2,7 +2,7 @@
 #include <vector>
 #include <algorithm>
 
-void duplicates(std::vector<int>& mas, const int& element) {
+void duplicates(std::vector<int>& mas, const int& element) noexcept {
 	auto it = std::find(mas.begin(), mas.end(), element);
 	if (it != mas.end())
 	{

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-std::string alg(const std::string& word) {
+std::string alg(const std::string& word) noexcept {
 	const int len = word.length();
 	if (len > 10) {
 		return word[0] + std::to_string(len - 2) + word[len - 1];
