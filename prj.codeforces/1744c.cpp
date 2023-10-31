@@ -8,6 +8,7 @@ int alg(std::string& s, const int& n, const int& c) noexcept {
 }
 
 int main() {
+  std::ios::sync_with_stdio(false);
   int t, n, c;
   std::string s;
   std::cin >> t;
