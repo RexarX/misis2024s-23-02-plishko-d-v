@@ -26,6 +26,7 @@ std::vector<int> decompose(const int& num) noexcept {
 
 int main()
 {
+	std::ios::sync_with_stdio(false);
 	int t, input;
 	std::vector<int> array, current;
 	std::cin >> t;
