@@ -2,7 +2,7 @@
 
 int main()
 {
-    std::ios::sync_with_stdio(false);
+	std::ios::sync_with_stdio(false);
 	int t, n, m, sx, sy, d;
 	std::cin >> t;
 	for (int i = 0; i < t; ++i) {
