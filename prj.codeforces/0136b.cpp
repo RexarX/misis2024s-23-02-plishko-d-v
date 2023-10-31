@@ -14,7 +14,7 @@ int tor(int& a, int& c) noexcept {
 
 int main()
 {
-    std::ios::sync_with_stdio(false);
+	std::ios::sync_with_stdio(false);
 	int a, c;
 	std::cin >> a >> c;
 	std::cout << tor(a, c);
