@@ -49,6 +49,7 @@ void alg(std::vector<std::string>& v, const int& n) noexcept {
 
 int main()
 {
+  std::ios::sync_with_stdio(false);
   int t, n;
   std::string row;
   std::vector<std::string> v;
