@@ -3,6 +3,7 @@
  
 int main()
 {
+	std::ios::sync_with_stdio(false);
 	int x, n, t, element;
 	std::cin >> t;
 	for (int i = 0; i < t; ++i) {
