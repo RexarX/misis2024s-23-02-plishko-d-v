@@ -3,6 +3,7 @@
 
 int main()
 {
+	std::ios::sync_with_stdio(false);
 	int n, cnt(0);
 	std::string word;
 	std::cin >> n;
