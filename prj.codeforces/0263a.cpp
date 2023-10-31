@@ -3,7 +3,7 @@
 
 int main()
 {
-    std::ios::sync_with_stdio(false);
+	std::ios::sync_with_stdio(false);
 	std::array<std::array<int, 5>, 5> mas;
 	int row, col;
 	for (int i = 0; i < 5; ++i) {
