@@ -3,6 +3,7 @@
 #include <algorithm>
 
 int main() {
+    std::ios::sync_with_stdio(false);
 	std::string name;
 	char current = 'a';
 	int rotation(0);
