@@ -13,6 +13,7 @@ bool isPalindrome(const std::string& s) noexcept {
 
 int main() 
 {
+	std::ios::sync_with_stdio(false);
 	int t, a, b, len;
 	std::string s;
 	std::cin >> t;
