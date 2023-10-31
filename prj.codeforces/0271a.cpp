@@ -2,7 +2,7 @@
 
 int main()
 {
-    std::ios::sync_with_stdio(false);
+	std::ios::sync_with_stdio(false);
 	int year, ones, tens, hds, tds;
 	bool flag = true;
 	std::cin >> year;
