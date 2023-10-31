@@ -2,6 +2,7 @@
 
 int main()
 {
+    std::ios::sync_with_stdio(false);
 	int t, n;
 	std::cin >> t;
 	while (t--) {
