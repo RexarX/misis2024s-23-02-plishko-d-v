@@ -3,6 +3,7 @@
 #include <algorithm>
 
 int main() {
+	std::ios::sync_with_stdio(false);
 	int t, n, right, left;
 	std::array<bool, 100> mas{};
 	std::cin >> t;
