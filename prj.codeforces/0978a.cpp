@@ -12,6 +12,7 @@ void duplicates(std::vector<int>& mas, const int& element) noexcept {
 
 int main()
 {
+	std::ios::sync_with_stdio(false);
 	int n, element;
 	std::cin >> n;
 	std::vector<int> mas;
