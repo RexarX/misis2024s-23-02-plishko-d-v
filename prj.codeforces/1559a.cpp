@@ -11,6 +11,7 @@ int alg(const std::vector<int>& mas, const int& n) noexcept {
 
 int main()
 {
+  std::ios::sync_with_stdio(false);
   int t, n, element;
   std::vector<int> mas;
   std::cin >> t;
