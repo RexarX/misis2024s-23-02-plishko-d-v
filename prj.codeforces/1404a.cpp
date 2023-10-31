@@ -22,6 +22,7 @@ bool isBalanced(std::string& s, const int& n, const int& k) noexcept {
 
 int main() 
 {
+	std::ios::sync_with_stdio(false);
 	int t, n, k;
 	std::string s;
 	std::cin >> t;
