@@ -11,6 +11,7 @@ std::string alg(const std::string& word) noexcept {
 
 int main()
 {
+	std::ios::sync_with_stdio(false);
 	int n;
 	std::string word;
 	std::cin >> n;
