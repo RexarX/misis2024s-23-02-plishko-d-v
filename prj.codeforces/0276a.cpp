@@ -9,6 +9,7 @@ int joy(const int& f, const int& t, const int& k) noexcept {
 
 int main()
 {
+	std::ios::sync_with_stdio(false);
 	int n, k, f, t, mx(0), cur;
 	std::cin >> n >> k;
 	for (int i = 0; i < n; ++i) {
