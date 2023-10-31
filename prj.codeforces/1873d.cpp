@@ -2,6 +2,7 @@
 
 int main()
 {
+	std::ios::sync_with_stdio(false);
 	int t, n, k, cnt, mx;
 	char element;
 	std::cin >> t;
