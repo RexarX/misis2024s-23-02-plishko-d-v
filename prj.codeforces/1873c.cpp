@@ -4,6 +4,7 @@
 
 int main()
 {
+  std::ios::sync_with_stdio(false);
   int t;
   char element;
   std::cin >> t;
