@@ -1,8 +1,7 @@
 #include <iostream>
 #include <algorithm>
 
-int main()
-{
+int main() {
   std::ios::sync_with_stdio(false);
   int t, a, b, c;
   std::cin >> t;

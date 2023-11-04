@@ -1,7 +1,6 @@
 #include <iostream>
 
-int main()
-{
+int main() {
 	std::ios::sync_with_stdio(false);
 	int t, n, k, cnt, mx;
 	char element;

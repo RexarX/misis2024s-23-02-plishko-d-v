@@ -2,8 +2,7 @@
 #include <string>
 #include <algorithm>
 
-int main()
-{
+int main() {
   std::ios::sync_with_stdio(false);
   int t;
   char element;

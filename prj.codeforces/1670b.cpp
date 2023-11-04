@@ -14,17 +14,16 @@ int alg(const std::string& s, const std::vector<char>& symbols, const int& n) no
 	return res;
 }
  
-int main() 
-{
+int main() {
 	std::ios::sync_with_stdio(false);
 	std::cin.tie(nullptr);
 	int t, n, k;
 	std::string s;
 	std::vector<char> symbols;
+	symbols.reserve(26);
 	char symbol;
 	std::cin >> t;
 	for (int i = 0; i < t; ++i) {
-		symbols.clear();
 		std::cin >> n;
 		std::cin >> s;
 		std::cin >> k;
@@ -33,6 +32,7 @@ int main()
 			symbols.push_back(symbol);
 		}
 		std::cout << alg(s, symbols, n) << '\n';
+		symbols.clear();
 	}
 	return 0;
 }
