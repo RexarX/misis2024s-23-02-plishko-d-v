@@ -16,8 +16,8 @@ struct Complex {
   std::ostream& writeTo(std::ostream& ostrm) const; //function that writes the complex number to an output stream
   std::istream& readFrom(std::istream& istrm); //function that reads a complex number from an input stream
 
-  double re{}; //zero-initialization
-  double im{}; //zero-initialization
+  double re{ 0.0 }; //zero-initialization
+  double im{ 0.0 }; //zero-initialization
 
   static const char leftBrace{ '{' }; //one time initialization
   static const char separator{ ',' }; //one time initialization
