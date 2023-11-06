@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include <sstream>
 
 struct Complex {
@@ -28,7 +29,8 @@ struct Complex {
 
 Complex operator+(const Complex& lhs, const Complex& rhs); //non-member function, addition operator that adds two complex numbers and returns the result
 Complex operator-(const Complex& lhs, const Complex& rhs); //non-member function, subtraction operator that subtracts one complex number from another and returns the result 
-Complex operator*(const Complex& lhs, const Complex& rhs);
+Complex operator*(const Complex& lhs, const Complex& rhs); //non-member function, multiplication operator that multiplies one complex number to another and returns the result
+Complex operator/(const Complex& lhs, const Complex& rhs); //non-member function, division operator that divides one complex number to another and returns the result
 
 inline std::ostream& operator<<(std::ostream& ostrm, const Complex& rhs) {
   return rhs.writeTo(ostrm);
@@ -53,18 +55,36 @@ bool testParse(const std::string& str) {
 
 int main() {
   Complex z;
-  z += Complex(8.0);
+  std::cout << "complex number: " << z << '\n';
+
+  z += Complex(8.0, 3.0);
+  std::cout << "complex += complex: " << z << '\n';
   z += 4.0;
-  z = Complex(8.0) + Complex(4.0);
-  z -= Complex(8.0);
+  std::cout << "complex += real: " << z << '\n';
+  z = Complex(8.0, 3.0) + Complex(4.0, 2.0);
+  std::cout << "complex + complex: " << z << '\n';
+
+  z -= Complex(8.0, 3.0);
+  std::cout << "complex -= complex: " << z << '\n';
   z -= 4.0;
-  z = Complex(8.0) - Complex(4.0);
-  z *= Complex(8.0);
+  std::cout << "complex += real: " << z << '\n';
+  z = Complex(8.0, 3.0) - Complex(4.0, 2.0);
+  std::cout << "complex - complex: " << z << '\n';
+
+  z *= Complex(8.0, 3.0);
+  std::cout << "complex *= complex: " << z << '\n';
   z *= 4.0;
-  z = Complex(8.0) * Complex(4.0);
-  /*z /= Complex(8.0);
+  std::cout << "complex *= real: " << z << '\n';
+  z = Complex(8.0, 3.0) * Complex(4.0, 2.0);
+  std::cout << "complex * complex: " << z << '\n';
+
+  z /= Complex(8.0, 3.0);
+  std::cout << "complex /= complex: " << z << '\n';
   z /= 4.0;
-  z = Complex(8.0) / Complex(4.0); */
+  std::cout << "complex /= real: " << z << '\n';
+  z = Complex(8.0, 3.0) / Complex(4.0, 2.0);
+  std::cout << "complex / complex: " << z << '\n';
+
   testParse("{8.9,9}");
   testParse("{8.9, 9}");
   testParse("{8.9,9");
@@ -113,7 +133,7 @@ Complex& Complex::operator*=(const Complex& rhs) {
   re *= rhs;
   im *= rhs;
   return *this;
-} */
+}*/
 
 Complex operator*(const Complex& lhs, const Complex& rhs) {
   Complex multiply;
@@ -132,7 +152,7 @@ Complex& Complex::operator/=(const Complex& rhs) {
   re = re / rhs;
   im = im / rhs;
   return *this;
-} */
+}*/
 
 Complex operator/(const Complex& lhs, const Complex& rhs) {
   Complex division;
