@@ -113,13 +113,11 @@ Complex& Complex::operator-=(const Complex& rhs) {
   return *this;
 }
 
-Complex operator+(const Complex& lhs, const Complex& rhs) {
-  Complex sum(lhs);
-  sum += rhs;
-  return sum;
+inline Complex operator+(const Complex& lhs, const Complex& rhs) {
+  return Complex(lhs.re + rhs.re, lhs.im + rhs.im);
 }
 
-Complex operator-(const Complex& lhs, const Complex& rhs) {
+inline Complex operator-(const Complex& lhs, const Complex& rhs) {
   return Complex(lhs.re - rhs.re, lhs.im - rhs.im);
 }
 
