@@ -1,6 +1,5 @@
 #include <iostream>
 #include <sstream>
-#include <cmath>
 
 struct Complex {
   Complex() = default; //default constructor
