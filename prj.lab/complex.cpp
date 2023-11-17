@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 #include <sstream>
 
 struct Complex {
@@ -18,7 +17,7 @@ struct Complex {
   Complex& operator/=(const double rhs) { return operator/=(Complex(rhs)); } //division assignment operator that multiplies the current complex number by a real number
   std::ostream& writeTo(std::ostream& ostrm) const; //function that writes the complex number to an output stream
   std::istream& readFrom(std::istream& istrm); //function that reads a complex number from an input stream
-
+ 
   double re{ 0.0 }; //zero-initialization
   double im{ 0.0 }; //zero-initialization
 
@@ -54,7 +53,7 @@ bool testParse(const std::string& str) {
 }
 
 int main() {
-  Complex z;
+  Complex z = Complex(4.0, 4.0);
   std::cout << "complex number: " << z << '\n';
 
   z += Complex(8.0, 3.0);
@@ -122,8 +121,9 @@ inline Complex operator-(const Complex& lhs, const Complex& rhs) {
 }
 
 Complex& Complex::operator*=(const Complex& rhs) {
-  re = re * rhs.re - im * rhs.im;
-  im = re * rhs.im + im * rhs.re;
+  const double temp = re;
+  re = temp * rhs.re - im * rhs.im;
+  im = temp * rhs.im + im * rhs.re;
   return *this;
 }
 
@@ -141,8 +141,9 @@ Complex operator*(const Complex& lhs, const Complex& rhs) {
 }
 
 Complex& Complex::operator/=(const Complex& rhs) {
-  re = (re * rhs.re + im * rhs.im) / (rhs.re * rhs.re + rhs.im * rhs.im);
-  im = (rhs.re * im - re * rhs.im) / (rhs.re * rhs.re + rhs.im * rhs.im);
+  const double temp = re;
+  re = (temp * rhs.re + im * rhs.im) / (rhs.re * rhs.re + rhs.im * rhs.im);
+  im = (rhs.re * im - temp * rhs.im) / (rhs.re * rhs.re + rhs.im * rhs.im);
   return *this;
 }
 
