@@ -1,1 +1,1 @@
-add_executable(complex complex.cpp)
+add_subdirectory(complex)
