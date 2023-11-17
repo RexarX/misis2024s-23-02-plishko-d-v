@@ -1,6 +1,16 @@
 #include <iostream>
 #include <complex/complex.hpp>
 
+Complex::Complex(const double real)
+  : Complex(real, 0.0)
+{
+}
+
+Complex::Complex(const double real, const double imaginary)
+  : re(real), im(imaginary)
+{
+}
+
 inline std::ostream& operator<<(std::ostream& ostrm, const Complex& rhs) {
   return rhs.writeTo(ostrm);
 }

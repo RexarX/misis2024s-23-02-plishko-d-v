@@ -31,14 +31,4 @@ Complex operator-(const Complex& lhs, const Complex& rhs); //non-member function
 Complex operator*(const Complex& lhs, const Complex& rhs); //non-member function, multiplication operator that multiplies one complex number to another and returns the result
 Complex operator/(const Complex& lhs, const Complex& rhs); //non-member function, division operator that divides one complex number to another and returns the result
 
-Complex::Complex(const double real)
-  : Complex(real, 0.0)
-{
-}
-
-Complex::Complex(const double real, const double imaginary)
-  : re(real), im(imaginary)
-{
-}
-
 #endif
