@@ -46,12 +46,6 @@ Complex& Complex::operator*=(const Complex& rhs) {
   return *this;
 }
 
-/*Complex& Complex::operator*=(const double rhs) {
-  re *= rhs;
-  im *= rhs;
-  return *this;
-}*/
-
 inline Complex operator*(const Complex& lhs, const Complex& rhs) {
   return Complex(lhs.re * rhs.re - lhs.im * rhs.im, lhs.re * rhs.im + lhs.im * rhs.re);
 }
@@ -62,12 +56,6 @@ Complex& Complex::operator/=(const Complex& rhs) {
   im = (rhs.re * im - temp * rhs.im) / (rhs.re * rhs.re + rhs.im * rhs.im);
   return *this;
 }
-
-/*Complex& Complex::operator/=(const double rhs) {
-  re = re / rhs;
-  im = im / rhs;
-  return *this;
-}*/
 
 inline Complex operator/(const Complex& lhs, const Complex& rhs) {
   return Complex((lhs.re * rhs.re + lhs.im * rhs.im) / (rhs.re * rhs.re + rhs.im * rhs.im),
