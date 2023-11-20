@@ -1,41 +1,40 @@
-#ifndef RATIONAL_HPP
-#define RATIONAL_HPP
+#include <cstdint>
 
 class Rational {
 public:
   Rational() = default;
-  Rational(const long long int num, const long long int den);
-  bool operator==(const Rational& lhs) const { return (num_ == lhs.num_) && (den_ == lhs.den_); }
+  explicit Rational(const int64_t num);
+  Rational(const int64_t num, const int64_t den);
+
+  int64_t num() const { return num_; }
+  int64_t den() const { return den_; }
+
+  bool operator==(const Rational& lhs) const { return num_ * lhs.den_ == lhs.num_ * den_; }
   bool operator!=(const Rational& lhs) const { return !operator==(lhs); }
-  Rational(const long long int num);
-  Rational(const long long int num, const unsigned int den);
+  bool operator>(const Rational& lhs) const { return num_ * lhs.den_ > lhs.num_ * den_; }
+  bool operator<(const Rational& lhs) const { return num_ * lhs.den_ < lhs.num_ * den_; }
+  bool operator>=(const Rational& lhs) const { return operator==(lhs) || operator>(lhs); }
+  bool operator<=(const Rational& lhs) const { return operator==(lhs) || operator<(lhs); }
+
   Rational& operator+=(const Rational& lhs);
-  Rational& operator+=(const long long int lhs) { return operator+=(Rational(lhs)); }
+  Rational& operator+=(const int64_t lhs) { return operator+=(Rational(lhs)); }
   Rational& operator-=(const Rational& lhs);
-  Rational& operator-=(const long long int lhs) { return operator-=(Rational(lhs)); }
+  Rational& operator-=(const int64_t lhs) { return operator-=(Rational(lhs)); }
   Rational& operator*=(const Rational& lhs);
-  Rational& operator*=(const long long int lhs) { return operator*=(Rational(lhs)); }
+  Rational& operator*=(const int64_t lhs) { return operator*=(Rational(lhs)); }
   Rational& operator/=(const Rational& lhs);
-  Rational& operator/=(const long long int lhs) { return operator/=(Rational(lhs)); }
+  Rational& operator/=(const int64_t lhs) { return operator/=(Rational(lhs)); }
 
   std::ostream& writeTo(std::ostream& ostrm) const;
   std::istream& readFrom(std::istream& istrm);
 
-  long long int num_{ 0 };
-  unsigned int den_{ 1 };
-
 private:
-  long long int num_{ 0 };
-  unsigned int den_{ 1 };
-
-  static const char leftBrace{ '{' };
-  static const char separator{ '/' };
-  static const char rightBrace{ '}' };
+  int64_t num_ = 0;
+  int64_t den_ = 1;
+  static const char separator = '/';
 };
 
 Rational operator+(const Rational& lhs, const Rational& rhs);
 Rational operator-(const Rational& lhs, const Rational& rhs);
 Rational operator*(const Rational& lhs, const Rational& rhs);
 Rational operator/(const Rational& lhs, const Rational& rhs);
-
-#endif

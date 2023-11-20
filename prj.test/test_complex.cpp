@@ -16,7 +16,8 @@ bool testParse(const std::string& str) {
 }
 
 int main() {
-  Complex z = Complex(4.0, 4.0);
+
+  Complex z(4.0);
   std::cout << "complex number: " << z << '\n';
 
   z += Complex(8.0, 3.0);
