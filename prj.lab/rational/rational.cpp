@@ -59,7 +59,6 @@ Rational& Rational::operator-=(const Rational& rhs) {
     num_ -= rhs.num_;
   }
   return *this;
-  return *this;
 }
 
 inline Rational operator+(const Rational& lhs, const Rational& rhs) {
