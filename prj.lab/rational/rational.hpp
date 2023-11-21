@@ -34,7 +34,7 @@ private:
   static const char separator = '/';
 };
 
-Rational operator+(const Rational& lhs, const Rational& rhs);
-Rational operator-(const Rational& lhs, const Rational& rhs);
-Rational operator*(const Rational& lhs, const Rational& rhs);
-Rational operator/(const Rational& lhs, const Rational& rhs);
+inline Rational operator+(const Rational& lhs, const Rational& rhs);
+inline Rational operator-(const Rational& lhs, const Rational& rhs);
+inline Rational operator*(const Rational& lhs, const Rational& rhs);
+inline Rational operator/(const Rational& lhs, const Rational& rhs);

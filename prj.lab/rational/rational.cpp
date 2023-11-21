@@ -22,10 +22,9 @@ Rational::Rational(const int64_t num, const int64_t den)
   : num_(num), den_(den) {
   if (den_ == 0) {
     throw std::invalid_argument("Zero denumenator in Rational ctor");
-  }
-  else if (den_ < 0) {
-    num_ *= -1;
-    den_ *= -1;
+  } else if (den_ < 0) {
+    num_ = -num_;
+    den_ = -den_;
   }
 }
 
@@ -39,7 +38,7 @@ inline std::istream& operator>>(std::istream& istrm, Rational& rhs) {
 
 Rational& Rational::operator+=(const Rational& rhs) {
   if (den_ != rhs.den_) {
-    int64_t temp = least_common_multiple(den_, rhs.den_);
+    const int64_t temp = least_common_multiple(den_, rhs.den_);
     num_ = temp / den_ * num_ + temp / rhs.den_ * rhs.num_;
     den_ = temp;
   }
@@ -51,7 +50,7 @@ Rational& Rational::operator+=(const Rational& rhs) {
 
 Rational& Rational::operator-=(const Rational& rhs) {
   if (den_ != rhs.den_) {
-    int64_t temp = least_common_multiple(den_, rhs.den_);
+    const int64_t temp = least_common_multiple(den_, rhs.den_);
     num_ = temp / den_ * num_ - temp / rhs.den_ * rhs.num_;
     den_ = temp;
   }
@@ -63,7 +62,7 @@ Rational& Rational::operator-=(const Rational& rhs) {
 
 inline Rational operator+(const Rational& lhs, const Rational& rhs) {
   if (lhs.den() != rhs.den()) {
-    int64_t temp = least_common_multiple(lhs.den(), rhs.den());
+    const int64_t temp = least_common_multiple(lhs.den(), rhs.den());
     return  Rational(temp / lhs.den() * lhs.num() + temp / rhs.den() * rhs.num(), temp);
   }
   else {
@@ -73,7 +72,7 @@ inline Rational operator+(const Rational& lhs, const Rational& rhs) {
 
 inline Rational operator-(const Rational& lhs, const Rational& rhs) {
   if (lhs.den() != rhs.den()) {
-    int64_t temp = least_common_multiple(lhs.den(), rhs.den());
+    const int64_t temp = least_common_multiple(lhs.den(), rhs.den());
     return  Rational(temp / lhs.den() * lhs.num() - temp / rhs.den() * rhs.num(), temp);
   }
   else {
@@ -92,9 +91,8 @@ inline Rational operator*(const Rational& lhs, const Rational& rhs) {
 }
 
 Rational& Rational::operator/=(const Rational& rhs) {
-  int64_t temp = num_;
+  den_ *= num_;
   num_ *= rhs.den_;
-  den_ *= temp;
   return *this;
 }
 
