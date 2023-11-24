@@ -17,7 +17,7 @@ TEST_CASE("rational ctor") {
   CHECK(3 == q.den());
 
   CHECK(1 == (q == Rational(-2, 3)));
-  CHECK(1 != (q == Rational(2)));
+  CHECK(1 == (q != Rational(2)));
 
   CHECK(Rational(1, 2) >= q);
   CHECK(Rational(-2, 3) >= q);

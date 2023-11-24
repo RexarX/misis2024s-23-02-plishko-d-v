@@ -41,8 +41,7 @@ Rational& Rational::operator+=(const Rational& rhs) {
     const int64_t temp = least_common_multiple(den_, rhs.den_);
     num_ = temp / den_ * num_ + temp / rhs.den_ * rhs.num_;
     den_ = temp;
-  }
-  else {
+  } else {
     num_ += rhs.num_;
   }
   return *this;
@@ -53,8 +52,7 @@ Rational& Rational::operator-=(const Rational& rhs) {
     const int64_t temp = least_common_multiple(den_, rhs.den_);
     num_ = temp / den_ * num_ - temp / rhs.den_ * rhs.num_;
     den_ = temp;
-  }
-  else {
+  } else {
     num_ -= rhs.num_;
   }
   return *this;
@@ -64,8 +62,7 @@ inline Rational operator+(const Rational& lhs, const Rational& rhs) {
   if (lhs.den() != rhs.den()) {
     const int64_t temp = least_common_multiple(lhs.den(), rhs.den());
     return  Rational(temp / lhs.den() * lhs.num() + temp / rhs.den() * rhs.num(), temp);
-  }
-  else {
+  } else {
     return Rational(lhs.num() + rhs.num(), lhs.den());
   }
 }
@@ -74,8 +71,7 @@ inline Rational operator-(const Rational& lhs, const Rational& rhs) {
   if (lhs.den() != rhs.den()) {
     const int64_t temp = least_common_multiple(lhs.den(), rhs.den());
     return  Rational(temp / lhs.den() * lhs.num() - temp / rhs.den() * rhs.num(), temp);
-  }
-  else {
+  } else {
     return Rational(lhs.num() - rhs.num(), lhs.den());
   }
 }
@@ -114,8 +110,7 @@ std::istream& Rational::readFrom(std::istream& istrm) {
     if (Rational::separator == slash) {
       num_ = num;
       den_ = den;
-    }
-    else {
+    } else {
       istrm.setstate(std::ios_base::failbit);
     }
   }
