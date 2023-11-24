@@ -13,7 +13,7 @@ int64_t least_common_multiple(const int64_t& a, const int64_t& b) noexcept {
   return (a * b) / greatest_common_divisor(a, b);
 }
 
-Rational::Rational(const int64_t num) noexcept
+Rational::Rational(const int64_t num)
   : Rational(num, 1)
 {
 }
@@ -36,7 +36,7 @@ inline std::istream& operator>>(std::istream& istrm, Rational& rhs) {
   return rhs.readFrom(istrm);
 }
 
-Rational& Rational::operator+=(const Rational& rhs) noexcept {
+Rational& Rational::operator+=(const Rational& rhs) {
   if (den_ != rhs.den_) {
     const int64_t temp = least_common_multiple(den_, rhs.den_);
     num_ = temp / den_ * num_ + temp / rhs.den_ * rhs.num_;
@@ -47,7 +47,7 @@ Rational& Rational::operator+=(const Rational& rhs) noexcept {
   return *this;
 }
 
-Rational& Rational::operator-=(const Rational& rhs) noexcept {
+Rational& Rational::operator-=(const Rational& rhs) {
   if (den_ != rhs.den_) {
     const int64_t temp = least_common_multiple(den_, rhs.den_);
     num_ = temp / den_ * num_ - temp / rhs.den_ * rhs.num_;
@@ -58,7 +58,7 @@ Rational& Rational::operator-=(const Rational& rhs) noexcept {
   return *this;
 }
 
-inline Rational operator+(const Rational& lhs, const Rational& rhs) noexcept {
+inline Rational operator+(const Rational& lhs, const Rational& rhs) {
   if (lhs.den() != rhs.den()) {
     const int64_t temp = least_common_multiple(lhs.den(), rhs.den());
     return  Rational(temp / lhs.den() * lhs.num() + temp / rhs.den() * rhs.num(), temp);
@@ -67,7 +67,7 @@ inline Rational operator+(const Rational& lhs, const Rational& rhs) noexcept {
   }
 }
 
-inline Rational operator-(const Rational& lhs, const Rational& rhs) noexcept {
+inline Rational operator-(const Rational& lhs, const Rational& rhs) {
   if (lhs.den() != rhs.den()) {
     const int64_t temp = least_common_multiple(lhs.den(), rhs.den());
     return  Rational(temp / lhs.den() * lhs.num() - temp / rhs.den() * rhs.num(), temp);
@@ -76,23 +76,23 @@ inline Rational operator-(const Rational& lhs, const Rational& rhs) noexcept {
   }
 }
 
-Rational& Rational::operator*=(const Rational& rhs) noexcept {
+Rational& Rational::operator*=(const Rational& rhs) {
   num_ *= rhs.num_;
   den_ *= rhs.den_;
   return *this;
 }
 
-inline Rational operator*(const Rational& lhs, const Rational& rhs) noexcept {
+inline Rational operator*(const Rational& lhs, const Rational& rhs) {
   return Rational(lhs.num() * rhs.num(), lhs.den() * rhs.den());
 }
 
-Rational& Rational::operator/=(const Rational& rhs) noexcept {
+Rational& Rational::operator/=(const Rational& rhs) {
   den_ *= num_;
   num_ *= rhs.den_;
   return *this;
 }
 
-inline Rational operator/(const Rational& lhs, const Rational& rhs) noexcept {
+inline Rational operator/(const Rational& lhs, const Rational& rhs) {
   return Rational(lhs.num() * rhs.den(), lhs.den() * rhs.num());
 }
 
