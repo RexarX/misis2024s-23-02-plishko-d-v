@@ -1,7 +1,7 @@
 #include <sstream>
 #include <rational/rational.hpp>
 
-int64_t greatest_common_divisor(const int64_t& a, const int64_t& b) {
+int64_t greatest_common_divisor(const int64_t& a, const int64_t& b) noexcept {
   if (a % b == 0) { return b; }
   if (b % a == 0) { return a; }
   if (a > b) { return greatest_common_divisor(a % b, b); }
@@ -9,11 +9,11 @@ int64_t greatest_common_divisor(const int64_t& a, const int64_t& b) {
   return greatest_common_divisor(a, b % a);
 }
 
-int64_t least_common_multiple(const int64_t& a, const int64_t& b) {
+int64_t least_common_multiple(const int64_t& a, const int64_t& b) noexcept {
   return (a * b) / greatest_common_divisor(a, b);
 }
 
-Rational::Rational(const int64_t num)
+Rational::Rational(const int64_t num) noexcept
   : Rational(num, 1)
 {
 }
@@ -36,7 +36,7 @@ inline std::istream& operator>>(std::istream& istrm, Rational& rhs) {
   return rhs.readFrom(istrm);
 }
 
-Rational& Rational::operator+=(const Rational& rhs) {
+Rational& Rational::operator+=(const Rational& rhs) noexcept {
   if (den_ != rhs.den_) {
     const int64_t temp = least_common_multiple(den_, rhs.den_);
     num_ = temp / den_ * num_ + temp / rhs.den_ * rhs.num_;
@@ -47,7 +47,7 @@ Rational& Rational::operator+=(const Rational& rhs) {
   return *this;
 }
 
-Rational& Rational::operator-=(const Rational& rhs) {
+Rational& Rational::operator-=(const Rational& rhs) noexcept {
   if (den_ != rhs.den_) {
     const int64_t temp = least_common_multiple(den_, rhs.den_);
     num_ = temp / den_ * num_ - temp / rhs.den_ * rhs.num_;
@@ -58,7 +58,7 @@ Rational& Rational::operator-=(const Rational& rhs) {
   return *this;
 }
 
-inline Rational operator+(const Rational& lhs, const Rational& rhs) {
+inline Rational operator+(const Rational& lhs, const Rational& rhs) noexcept {
   if (lhs.den() != rhs.den()) {
     const int64_t temp = least_common_multiple(lhs.den(), rhs.den());
     return  Rational(temp / lhs.den() * lhs.num() + temp / rhs.den() * rhs.num(), temp);
@@ -67,7 +67,7 @@ inline Rational operator+(const Rational& lhs, const Rational& rhs) {
   }
 }
 
-inline Rational operator-(const Rational& lhs, const Rational& rhs) {
+inline Rational operator-(const Rational& lhs, const Rational& rhs) noexcept {
   if (lhs.den() != rhs.den()) {
     const int64_t temp = least_common_multiple(lhs.den(), rhs.den());
     return  Rational(temp / lhs.den() * lhs.num() - temp / rhs.den() * rhs.num(), temp);
@@ -76,23 +76,23 @@ inline Rational operator-(const Rational& lhs, const Rational& rhs) {
   }
 }
 
-Rational& Rational::operator*=(const Rational& rhs) {
+Rational& Rational::operator*=(const Rational& rhs) noexcept {
   num_ *= rhs.num_;
   den_ *= rhs.den_;
   return *this;
 }
 
-inline Rational operator*(const Rational& lhs, const Rational& rhs) {
+inline Rational operator*(const Rational& lhs, const Rational& rhs) noexcept {
   return Rational(lhs.num() * rhs.num(), lhs.den() * rhs.den());
 }
 
-Rational& Rational::operator/=(const Rational& rhs) {
+Rational& Rational::operator/=(const Rational& rhs) noexcept {
   den_ *= num_;
   num_ *= rhs.den_;
   return *this;
 }
 
-inline Rational operator/(const Rational& lhs, const Rational& rhs) {
+inline Rational operator/(const Rational& lhs, const Rational& rhs) noexcept {
   return Rational(lhs.num() * rhs.den(), lhs.den() * rhs.num());
 }
 
