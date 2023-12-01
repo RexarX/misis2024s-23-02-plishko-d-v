@@ -2,7 +2,6 @@
 #include "doctest.h"
 
 #include <dynarr/dynarr.cpp>
-#include <string>
 
 TEST_CASE("DynamicArray ctor") {
   DynArr<int> q;
