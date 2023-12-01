@@ -19,7 +19,7 @@ TEST_CASE("rational ctor") {
   CHECK_THROWS(Rational(1, 0));
 }
 
-TEST_CASE("rational bool operator") {
+TEST_CASE("rational bool operators") {
   Rational q(2, -3);
   CHECK(1 == (q == Rational(-2, 3)));
   CHECK(1 == (q != Rational(2)));
@@ -33,7 +33,7 @@ TEST_CASE("rational bool operator") {
   CHECK(Rational(-3, 4) < q);
 }
 
-TEST_CASE("rational arithmetic operator") {
+TEST_CASE("rational arithmetic operators") {
   Rational q(2, -3);
 
   q += Rational(-2, 3);
