@@ -55,7 +55,6 @@ DynArr<T>& DynArr<T>::operator=(const DynArr<T>& rhs) {
 template<class T>
 const T& DynArr<T>::operator[](const ptrdiff_t& index) const {
   if (index > size_ || index < 0) { throw std::out_of_range("Index out of range"); }
-  //std::cout << '|' << '1' << '|';
 
   return data_[index];
 }
