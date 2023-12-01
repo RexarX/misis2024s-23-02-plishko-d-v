@@ -7,6 +7,7 @@ DynArr<T>::DynArr()
   : data_(new T[capacity_]) 
 {
 }
+
 template<class T>
 DynArr<T>::DynArr(const DynArr<T>& rhs)
   : size_(rhs.size_), capacity_(rhs.capacity_), data_(rhs.data_)
