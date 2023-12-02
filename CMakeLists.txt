@@ -2,8 +2,6 @@
 
 project(misis2023f-23-2-plishko-d-v)
 
-set(CMAKE_CXX_STANDARD 20)
-
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set_property(GLOBAL PROPERTY PREDEFINED_TARGETS_FOLDER "cmake")
 
