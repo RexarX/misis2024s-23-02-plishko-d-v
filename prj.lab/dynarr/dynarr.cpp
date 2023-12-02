@@ -51,7 +51,7 @@ template<class T>
 void DynArr<T>::Pop_back() {
   if (size_ > 0) {
     T* newArray = new T[capacity_];
-    for (ptrdiff_t i = 0; i < size_ - 1; i++) {
+    for (ptrdiff_t i = 0; i < size_; i++) {
       newArray[i] = std::move(data_[i]);
     }
     delete[] data_;
