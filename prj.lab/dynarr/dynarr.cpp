@@ -33,7 +33,7 @@ void DynArr<T>::Resize(const ptrdiff_t& newCapacity) {
   T* newArray = new T[newCapacity];
   if (newCapacity < size_) { size_ = newCapacity; }
   for (ptrdiff_t i = 0; i < size_; i++) {
-    newArray[i] = data_[i];
+    newArray[i] = std::move(data_[i]);
   }
   delete[] data_;
   data_ = newArray;
@@ -52,7 +52,7 @@ void DynArr<T>::Pop_back() {
   if (size_ > 0) {
     T* newArray = new T[capacity_];
     for (ptrdiff_t i = 0; i < size_ - 1; i++) {
-      newArray[i] = data_[i];
+      newArray[i] = std::move(data_[i]);
     }
     delete[] data_;
     data_ = newArray;
@@ -65,10 +65,10 @@ template<class T>
 void DynArr<T>::Erase(const ptrdiff_t& index) {
   T* newArray = new T[capacity_];
   for (ptrdiff_t i = 0; i < index; i++) {
-    newArray[i] = data_[i];
+    newArray[i] = std::move(data_[i]);
   }
   for (ptrdiff_t i = index; i < size_; i++) {
-    newArray[i] = data_[i + 1];
+    newArray[i] = std::move(data_[i + 1]);
   }
   delete[] data_;
   data_ = newArray;
