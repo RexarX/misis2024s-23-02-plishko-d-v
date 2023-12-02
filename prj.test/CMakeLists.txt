@@ -9,5 +9,3 @@ target_link_libraries(test_complex complex)
 target_link_libraries(test_rational rational)
 
 target_link_libraries(test_dynarr dynarr)
-
-set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT test_rational)

@@ -4,7 +4,7 @@
 #include <dynarr/dynarr.cpp>
 
 TEST_CASE("DynamicArray ctor") {
-  DynArr<int> q(2);
+  DynArr<int> q;
   CHECK_THROWS(q.Pop_back());
 
   q.Push_back(10);
@@ -18,10 +18,8 @@ TEST_CASE("DynamicArray ctor") {
  
   CHECK(10 == q[0]);
   CHECK(10 == w[0]);
-
   q.Pop_back();
   CHECK(2 == q[2]);
-
   q.Erase(3);
   q.Push_back(4);
   CHECK(4 == q[2]);
