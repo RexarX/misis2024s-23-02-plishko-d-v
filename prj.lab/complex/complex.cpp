@@ -1,5 +1,5 @@
-#include <iostream>
 #include <complex/complex.hpp>
+#include <iostream>
 
 Complex::Complex(const double real)
   : Complex(real, 0.0)
