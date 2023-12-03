@@ -5,31 +5,45 @@
 
 TEST_CASE("DynamicArray ctor") {
   DynArr<int> q;
-  CHECK_THROWS(q.Pop_back());
+  DynArr<int> w;
 
   q.Push_back(10);
-  q.Push_back(1);
-  q.Push_back(2);
-  q.Push_back(3);
 
-  DynArr<int> w;
   w = q;
   CHECK(w == q);
- 
+
   CHECK(10 == q[0]);
   CHECK(10 == w[0]);
-  q.Pop_back();
-  CHECK(2 == q[2]);
-  q.Erase(3);
-  q.Push_back(4);
-  CHECK(4 == q[2]);
+}
 
-  q.Clear();
-  CHECK(0 == q.Size());
+TEST_CASE("DynamicArray methods") {
+  DynArr<int> e;
 
-  q.Resize(10);
-  CHECK(10 == q.Capacity());
+  CHECK_THROWS(e.Pop_back());
+  
+  e.Push_back(10);
+  e.Push_back(1);
+  e.Push_back(2);
+  e.Push_back(3);
+  
+  e.Pop_back();
+  CHECK(2 == e[2]);
 
-  CHECK_THROWS(q[100]);
-  CHECK_THROWS(q[-1]);
+  e.Erase(2);
+  e.Push_back(4);
+  CHECK(4 == e[2]);
+
+  e.Clear();
+  CHECK(0 == e.Size());
+
+  e.Resize(10);
+  CHECK(10 == e.Capacity());
+
+  CHECK_THROWS(e[100]);
+  CHECK_THROWS(e[-1]);
+
+  CHECK_THROWS(e.Resize(0));
+  CHECK_THROWS(e.Resize(-1));
+
+  CHECK_THROWS(e.Erase(-1));
 }
