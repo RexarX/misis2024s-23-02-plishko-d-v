@@ -1,6 +1,8 @@
 #ifndef COMPLEX_HPP
 #define COMPLEX_HPP
 
+#include <sstream>
+
 struct Complex {
   Complex() = default;
   explicit Complex(const double real);
