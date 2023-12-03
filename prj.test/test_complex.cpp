@@ -16,7 +16,6 @@ bool testParse(const std::string& str) {
 }
 
 int main() {
-
   Complex z(4.0);
   std::cout << "complex number: " << z << '\n';
 
