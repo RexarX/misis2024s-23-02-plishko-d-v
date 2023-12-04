@@ -3,21 +3,20 @@
 
 template<class T>
 DynArr<T>::DynArr()
-  : data_(new T[capacity_])
+  : data_(new T[capacity_]())
 {
 }
 
 template<class T>
 DynArr<T>::DynArr(const std::ptrdiff_t& rhs)
-  : capacity_(rhs)
+  : capacity_(rhs), data_(new T[capacity_]())
 {
-  data_ = new T[capacity_];
 }
 
 template<class T>
 DynArr<T>::DynArr(const DynArr<T>& rhs)
 {
-  if (capacity_ < rhs.size_) { Resize(rhs.size_); }
+  if (capacity_ < rhs.size_) { ChangeCapacity(rhs.size_); }
   for (std::ptrdiff_t i = 0; i < rhs.size_; i++) {
     data_[i] = rhs.data_[i];
   }
@@ -29,23 +28,34 @@ DynArr<T>::~DynArr() {
 }
 
 template<class T>
-void DynArr<T>::Resize(const std::ptrdiff_t& newCapacity) {
-  if (newCapacity > 0) {
-    T* newArray = new T[newCapacity];
-    if (newCapacity < size_) { size_ = newCapacity; }
-    for (std::ptrdiff_t i = 0; i < size_; i++) {
-      newArray[i] = std::move(data_[i]);
-    }
-    delete[] data_;
-    data_ = newArray;
-    capacity_ = newCapacity;
+void DynArr<T>::ChangeCapacity(const std::ptrdiff_t& newCapacity) {
+  T* newArray = new T[newCapacity]();
+  if (newCapacity < size_) { size_ = newCapacity; }
+  for (std::ptrdiff_t i = 0; i < size_; i++) {
+    newArray[i] = std::move(data_[i]);
   }
-  else { throw ("Invalid capacity value"); }
+  delete[] data_;
+  data_ = newArray;
+  capacity_ = newCapacity;
+}
+
+template <class T>
+void DynArr<T>::Resize(const std::ptrdiff_t& newSize) {
+  if (newSize > 0) {
+    if (newSize > capacity_) { ChangeCapacity(newSize); }
+    else {
+      for (std::ptrdiff_t i = newSize; i < capacity_; i++) {
+        data_[i] = 0;
+      }
+    }
+    size_ = newSize;
+  }
+  else { throw ("Invalid size value"); }
 }
 
 template<class T>
 void DynArr<T>::Push_back(const T& object) {
-  if (size_ >= capacity_) { Resize(2 * capacity_); }
+  if (size_ >= capacity_) { ChangeCapacity(2 * capacity_); }
   data_[size_] = object;
   ++size_;
 }
@@ -53,12 +63,12 @@ void DynArr<T>::Push_back(const T& object) {
 template<class T>
 void DynArr<T>::Pop_back() {
   if (size_ > 0) {
-    T* newArray = new T[capacity_];
+    /*T* newArray = new T[capacity_ + 1]();
     for (std::ptrdiff_t i = 0; i < size_; i++) {
       newArray[i] = std::move(data_[i]);
     }
     delete[] data_;
-    data_ = newArray;
+    data_ = newArray;*/
     --size_;
   }
   else { throw ("Empty array pop"); }
@@ -67,7 +77,7 @@ void DynArr<T>::Pop_back() {
 template<class T>
 void DynArr<T>::Erase(const std::ptrdiff_t& index) {
   if (index >= 0 && index < size_) {
-    T* newArray = new T[capacity_];
+    /*T* newArray = new T[capacity_ + 1]();
     for (std::ptrdiff_t i = 0; i < index; i++) {
       newArray[i] = std::move(data_[i]);
     }
@@ -75,7 +85,10 @@ void DynArr<T>::Erase(const std::ptrdiff_t& index) {
       newArray[i] = std::move(data_[i + 1]);
     }
     delete[] data_;
-    data_ = newArray;
+    data_ = newArray;*/
+    for (std::ptrdiff_t i = index; i < size_; i++) {
+      data_[i] = data_[i + 1];
+    }
     --size_;
   }
   else { throw std::out_of_range("Index out of range"); }
@@ -83,7 +96,7 @@ void DynArr<T>::Erase(const std::ptrdiff_t& index) {
 
 template<class T>
 void DynArr<T>::Clear() {
-  T* newArray = new T[capacity_];
+  T* newArray = new T[capacity_]();
   delete[] data_;
   data_ = newArray;
   size_ = 0;
@@ -99,7 +112,7 @@ void DynArr<T>::Print() {
 
 template<class T>
 DynArr<T>& DynArr<T>::operator=(const DynArr<T>& rhs) {
-  if (capacity_ < rhs.size_) { Resize(rhs.capacity_); }
+  if (capacity_ < rhs.size_) { ChangeCapacity(rhs.capacity_); }
   for (std::ptrdiff_t i = 0; i < rhs.size_; i++) {
     data_[i] = rhs.data_[i];
   }

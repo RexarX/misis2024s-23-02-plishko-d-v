@@ -9,9 +9,8 @@ public:
   ~DynArr();
 
   std::ptrdiff_t Size() const { return size_; }
-  std::ptrdiff_t Capacity() const { return capacity_; }
 
-  void Resize(const std::ptrdiff_t& newCapacity);
+  void Resize(const std::ptrdiff_t& newSize);
   void Push_back(const T& object);
   void Pop_back();
   void Erase(const std::ptrdiff_t& index);
@@ -27,6 +26,8 @@ public:
   bool operator!=(const DynArr<T>& rhs) const { return !operator==(rhs); }
 
 private:
+  void ChangeCapacity(const std::ptrdiff_t& newCapacity);
+
   std::ptrdiff_t size_ = 0;
   std::ptrdiff_t capacity_ = 1;
   T* data_ = nullptr;
