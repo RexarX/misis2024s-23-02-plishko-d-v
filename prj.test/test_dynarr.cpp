@@ -5,7 +5,7 @@
 
 TEST_CASE("DynamicArray ctor") {
   DynArr<int> q;
-  DynArr<int> w(q);
+  DynArr<int> w;
 
   CHECK_EQ(q[0], 0);
 

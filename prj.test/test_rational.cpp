@@ -3,6 +3,19 @@
 
 #include <rational/rational.cpp>
 
+bool testParse(const std::string& str) {
+  std::istringstream istrm(str);
+  Rational q;
+  istrm >> q;
+  if (istrm.good()) {
+    std::cout << "Read success: " << str << " -> " << q << '\n';
+  }
+  else {
+    std::cout << "Read error : " << str << " -> " << q << '\n';
+  }
+  return istrm.good();
+}
+
 TEST_CASE("rational ctor") {
   Rational r_def;
   CHECK(0 == r_def.num());
@@ -17,6 +30,12 @@ TEST_CASE("rational ctor") {
   CHECK(3 == q.den());
 
   CHECK_THROWS(Rational(1, 0));
+
+  testParse("1/2");
+  testParse("1 / 2");
+  testParse("1 /2");
+  testParse("1/ 2");
+  testParse("1/0");
 }
 
 TEST_CASE("rational bool operators") {

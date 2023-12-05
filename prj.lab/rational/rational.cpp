@@ -1,4 +1,4 @@
-#include <sstream>
+#include <iostream>
 #include <rational/rational.hpp>
 
 int64_t greatest_common_divisor(const int64_t& a, const int64_t& b) noexcept {
@@ -97,17 +97,18 @@ inline Rational operator/(const Rational& lhs, const Rational& rhs) {
 }
 
 std::ostream& Rational::writeTo(std::ostream& ostrm) const {
-  ostrm << num_ << separator << den_;
+  ostrm << num_ << '/' << den_;
   return ostrm;
 }
 
 std::istream& Rational::readFrom(std::istream& istrm) {
   int64_t num(0);
-  char slash(0);
+  char separator(0);
   int64_t den(1);
-  istrm >> num >> slash >> den;
+  istrm >> num >> separator >> den;
+  std::cout << istrm.bad() << ' ';
   if (istrm.good()) {
-    if (Rational::separator == slash) {
+    if (separator == '/') {
       num_ = num;
       den_ = den;
     } else {
