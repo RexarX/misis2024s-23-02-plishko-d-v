@@ -5,11 +5,12 @@
 
 TEST_CASE("DynamicArray ctor") {
   DynArr<int> q;
-  DynArr<int> w;
+  DynArr<int> w(q);
 
   CHECK_EQ(q[0], 0);
 
   q.Push_back(10);
+
   w = q;
   CHECK_EQ(w, q);
 
@@ -18,6 +19,22 @@ TEST_CASE("DynamicArray ctor") {
 
   w.Push_back(1);
   CHECK(w != q);
+
+  q.Clear();
+
+  CHECK_EQ(q[0], 0);
+
+  q.Push_back(10);
+
+  DynArr<int> e(q);
+
+  CHECK_EQ(q, e);
+
+  CHECK_EQ(10, q[0]);
+  CHECK_EQ(10, e[0]);
+
+  e.Push_back(1);
+  CHECK(e != q);
 }
 
 TEST_CASE("DynamicArray methods") {
