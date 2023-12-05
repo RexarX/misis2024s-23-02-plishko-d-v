@@ -15,9 +15,10 @@ DynArr<T>::DynArr(const std::ptrdiff_t& rhs)
 
 template<class T>
 DynArr<T>::DynArr(const DynArr<T>& rhs)
+  : size_(rhs.size_)
 {
-  if (capacity_ < rhs.size_) { ChangeCapacity(rhs.size_); }
-  for (std::ptrdiff_t i = 0; i < rhs.size_; i++) {
+  if (capacity_ < size_) { ChangeCapacity(size_); }
+  for (std::ptrdiff_t i = 0; i < size_; i++) {
     data_[i] = rhs.data_[i];
   }
 }
