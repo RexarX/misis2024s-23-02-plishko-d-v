@@ -15,7 +15,7 @@ DynArr<T>::DynArr(const std::ptrdiff_t& rhs)
 
 template<class T>
 DynArr<T>::DynArr(const DynArr<T>& rhs)
-  : size_(rhs.size_), capacity_(rhs.capacity_), data_(new T[rhs.capacity_ + 1])
+  : size_(rhs.size_), capacity_(rhs.capacity_), data_(new T[rhs.capacity_])
 {
   for (std::ptrdiff_t i = 0; i < size_; i++) {
     data_[i] = rhs.data_[i];
@@ -63,7 +63,7 @@ void DynArr<T>::Push_back(const T& object) {
 template<class T>
 void DynArr<T>::Pop_back() {
   if (size_ > 0) {
-    /*T* newArray = new T[capacity_ + 1]();
+    /*T* newArray = new T[capacity_]();
     for (std::ptrdiff_t i = 0; i < size_; i++) {
       newArray[i] = std::move(data_[i]);
     }
@@ -77,7 +77,7 @@ void DynArr<T>::Pop_back() {
 template<class T>
 void DynArr<T>::Erase(const std::ptrdiff_t& index) {
   if (index >= 0 && index < size_) {
-    /*T* newArray = new T[capacity_ + 1]();
+    /*T* newArray = new T[capacity_]();
     for (std::ptrdiff_t i = 0; i < index; i++) {
       newArray[i] = std::move(data_[i]);
     }
