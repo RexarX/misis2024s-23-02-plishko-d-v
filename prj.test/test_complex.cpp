@@ -1,5 +1,4 @@
 #include <iostream>
-#include <sstream>
 #include <complex/complex.cpp>
 
 bool testParse(const std::string& str) {
