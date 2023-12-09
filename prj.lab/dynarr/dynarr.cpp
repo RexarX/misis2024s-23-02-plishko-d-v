@@ -17,7 +17,7 @@ template<class T>
 DynArr<T>::DynArr(const DynArr<T>& rhs)
   : size_(rhs.size_), capacity_(rhs.capacity_), data_(new T[rhs.capacity_])
 {
-  for (std::ptrdiff_t i = 0; i < size_; i++) {
+  for (std::ptrdiff_t i = 0; i < size_; ++i) {
     data_[i] = rhs.data_[i];
   }
 }
@@ -31,7 +31,7 @@ template<class T>
 void DynArr<T>::ChangeCapacity(const std::ptrdiff_t& newCapacity) {
   T* newArray = new T[newCapacity]();
   if (newCapacity < size_) { size_ = newCapacity; }
-  for (std::ptrdiff_t i = 0; i < size_; i++) {
+  for (std::ptrdiff_t i = 0; i < size_; ++i) {
     newArray[i] = std::move(data_[i]);
   }
   delete[] data_;
@@ -44,7 +44,7 @@ void DynArr<T>::Resize(const std::ptrdiff_t& newSize) {
   if (newSize > 0) {
     if (newSize > capacity_) { ChangeCapacity(newSize); }
     else {
-      for (std::ptrdiff_t i = newSize; i < capacity_; i++) {
+      for (std::ptrdiff_t i = newSize; i < capacity_; ++i) {
         data_[i] = 0;
       }
     }
@@ -64,7 +64,7 @@ template<class T>
 void DynArr<T>::Pop_back() {
   if (size_ > 0) {
     /*T* newArray = new T[capacity_]();
-    for (std::ptrdiff_t i = 0; i < size_; i++) {
+    for (std::ptrdiff_t i = 0; i < size_; ++i) {
       newArray[i] = std::move(data_[i]);
     }
     delete[] data_;
@@ -78,15 +78,15 @@ template<class T>
 void DynArr<T>::Erase(const std::ptrdiff_t& index) {
   if (index >= 0 && index < size_) {
     /*T* newArray = new T[capacity_]();
-    for (std::ptrdiff_t i = 0; i < index; i++) {
+    for (std::ptrdiff_t i = 0; i < index; ++i) {
       newArray[i] = std::move(data_[i]);
     }
-    for (std::ptrdiff_t i = index; i < size_; i++) {
+    for (std::ptrdiff_t i = index; i < size_; ++i) {
       newArray[i] = std::move(data_[i + 1]);
     }
     delete[] data_;
     data_ = newArray;*/
-    for (std::ptrdiff_t i = index; i < size_; i++) {
+    for (std::ptrdiff_t i = index; i < size_; ++i) {
       data_[i] = data_[i + 1];
     }
     --size_;
@@ -104,7 +104,7 @@ void DynArr<T>::Clear() {
 
 template<class T>
 void DynArr<T>::Print() {
-  for (std::ptrdiff_t i = 0; i < size_; i++) {
+  for (std::ptrdiff_t i = 0; i < size_; ++i) {
     std::cout << data_[i] << ' ';
   }
   std::cout << '\n';
@@ -113,7 +113,7 @@ void DynArr<T>::Print() {
 template<class T>
 DynArr<T>& DynArr<T>::operator=(const DynArr<T>& rhs) {
   if (capacity_ < rhs.size_) { ChangeCapacity(rhs.capacity_); }
-  for (std::ptrdiff_t i = 0; i < rhs.size_; i++) {
+  for (std::ptrdiff_t i = 0; i < rhs.size_; ++i) {
     data_[i] = rhs.data_[i];
   }
   size_ = rhs.size_;
@@ -135,7 +135,7 @@ T& DynArr<T>::operator[](const std::ptrdiff_t& index) {
 template<class T>
 bool DynArr<T>::operator==(const DynArr<T>& rhs) const {
   if (size_ != rhs.size_) { return false; }
-  for (std::ptrdiff_t i = 0; i < size_; i++) {
+  for (std::ptrdiff_t i = 0; i < size_; ++i) {
     if (data_[i] != rhs.data_[i]) { return false; }
   }
   return true;

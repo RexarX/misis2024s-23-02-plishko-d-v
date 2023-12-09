@@ -106,7 +106,6 @@ std::istream& Rational::readFrom(std::istream& istrm) {
   char separator(0);
   int64_t den(1);
   istrm >> num >> separator >> den;
-  std::cout << istrm.bad() << ' ';
   if (istrm.good()) {
     if (separator == '/') {
       num_ = num;
