@@ -44,7 +44,7 @@ void DynArr::Resize(const std::ptrdiff_t& newSize) {
       /*for (std::ptrdiff_t i = newSize; i < capacity_; ++i) {
         data_[i] = 0;
       }*/
-      std::memset(data_ + newSize, static_cast<float>(0), capacity_);
+      std::memset(data_ + newSize, 0.0, capacity_);
     }
     size_ = newSize;
   }
