@@ -37,4 +37,14 @@ Complex operator-(const Complex& lhs, const Complex& rhs);
 Complex operator*(const Complex& lhs, const Complex& rhs);
 Complex operator/(const Complex& lhs, const Complex& rhs);
 
+Complex operator+(const Complex& lhs, const double& rhs) { return operator+(lhs, Complex(rhs)); }
+Complex operator-(const Complex& lhs, const double& rhs) { return operator-(lhs, Complex(rhs)); }
+Complex operator*(const Complex& lhs, const double& rhs) { return operator*(lhs, Complex(rhs)); }
+Complex operator/(const Complex& lhs, const double& rhs) { return operator/(lhs, Complex(rhs)); }
+
+Complex operator+(const double& lhs, const Complex& rhs) { return operator+(Complex(lhs), rhs); }
+Complex operator-(const double& lhs, const Complex& rhs) { return operator-(Complex(lhs), rhs); }
+Complex operator*(const double& lhs, const Complex& rhs) { return operator*(Complex(lhs), rhs); }
+Complex operator/(const double& lhs, const Complex& rhs) { return operator/(Complex(lhs), rhs); }
+
 #endif

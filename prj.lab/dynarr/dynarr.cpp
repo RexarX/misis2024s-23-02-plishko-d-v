@@ -15,9 +15,10 @@ DynArr::DynArr(const std::ptrdiff_t& rhs)
 DynArr::DynArr(const DynArr& rhs)
   : size_(rhs.size_), capacity_(rhs.capacity_), data_(new float[rhs.capacity_])
 {
-  for (std::ptrdiff_t i = 0; i < size_; ++i) {
+  /*for (std::ptrdiff_t i = 0; i < size_; ++i) {
     data_[i] = rhs.data_[i];
-  }
+  }*/
+  std::memcpy(data_, rhs.data_, size_ * sizeof(float));
 }
 
 DynArr::~DynArr() {
@@ -104,9 +105,10 @@ void DynArr::Print() {
 
 DynArr& DynArr::operator=(const DynArr& rhs) {
   if (capacity_ < rhs.size_) { ChangeCapacity(rhs.capacity_); }
-  for (std::ptrdiff_t i = 0; i < rhs.size_; ++i) {
+  /*for (std::ptrdiff_t i = 0; i < rhs.size_; ++i) {
     data_[i] = rhs.data_[i];
-  }
+  }*/
+  std::memcpy(data_, rhs.data_, rhs.size_ * sizeof(float));
   size_ = rhs.size_;
   return *this;
 }

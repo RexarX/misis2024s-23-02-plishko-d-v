@@ -39,3 +39,13 @@ inline Rational operator+(const Rational& lhs, const Rational& rhs);
 inline Rational operator-(const Rational& lhs, const Rational& rhs);
 inline Rational operator*(const Rational& lhs, const Rational& rhs);
 inline Rational operator/(const Rational& lhs, const Rational& rhs);
+
+inline Rational operator+(const Rational& lhs, const int64_t& rhs) { return operator+(lhs, Rational(rhs)); }
+inline Rational operator-(const Rational& lhs, const int64_t& rhs) { return operator-(lhs, Rational(rhs)); }
+inline Rational operator*(const Rational& lhs, const int64_t& rhs) { return operator*(lhs, Rational(rhs)); }
+inline Rational operator/(const Rational& lhs, const int64_t& rhs) { return operator/(lhs, Rational(rhs)); }
+
+inline Rational operator+(const int64_t& lhs, const Rational& rhs) { return operator+(Rational(lhs), rhs); }
+inline Rational operator-(const int64_t& lhs, const Rational& rhs) { return operator-(Rational(lhs), rhs); }
+inline Rational operator*(const int64_t& lhs, const Rational& rhs) { return operator*(Rational(lhs), rhs); }
+inline Rational operator/(const int64_t& lhs, const Rational& rhs) { return operator/(Rational(lhs), rhs); }

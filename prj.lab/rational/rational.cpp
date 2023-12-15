@@ -62,18 +62,16 @@ inline Rational operator+(const Rational& lhs, const Rational& rhs) {
   if (lhs.den() != rhs.den()) {
     const int64_t temp = least_common_multiple(lhs.den(), rhs.den());
     return  Rational(temp / lhs.den() * lhs.num() + temp / rhs.den() * rhs.num(), temp);
-  } else {
-    return Rational(lhs.num() + rhs.num(), lhs.den());
   }
+  return Rational(lhs.num() + rhs.num(), lhs.den());
 }
 
 inline Rational operator-(const Rational& lhs, const Rational& rhs) {
   if (lhs.den() != rhs.den()) {
     const int64_t temp = least_common_multiple(lhs.den(), rhs.den());
     return  Rational(temp / lhs.den() * lhs.num() - temp / rhs.den() * rhs.num(), temp);
-  } else {
-    return Rational(lhs.num() - rhs.num(), lhs.den());
   }
+  return Rational(lhs.num() - rhs.num(), lhs.den());
 }
 
 Rational& Rational::operator*=(const Rational& rhs) {
