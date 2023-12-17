@@ -5,6 +5,7 @@
 
 struct Complex {
   Complex() = default;
+  Complex(const Complex&) = default;
   explicit Complex(const double real);
   Complex(const double real, const double imaginary);
   ~Complex() = default;
