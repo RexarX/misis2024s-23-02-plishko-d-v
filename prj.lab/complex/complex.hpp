@@ -8,6 +8,7 @@ struct Complex {
   Complex(const Complex&) = default;
   explicit Complex(const double real);
   Complex(const double real, const double imaginary);
+  Complex& operator=(const Complex&) = default;
   ~Complex() = default;
 
   bool operator==(const Complex& rhs) const { return (re == rhs.re) && (im == rhs.im); }
