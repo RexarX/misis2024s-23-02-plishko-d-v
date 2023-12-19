@@ -7,13 +7,14 @@ bool testParse(const std::string& str) {
   std::istringstream istrm(str);
   Rational q;
   istrm >> q;
-  if (istrm.good()) {
+  bool stream_good = !istrm.fail() || (istrm.eof() && !istrm.fail());
+  if (stream_good) {
     std::cout << "Read success: " << str << " -> " << q << '\n';
   }
   else {
     std::cout << "Read error : " << str << " -> " << q << '\n';
   }
-  return istrm.good();
+  return stream_good;
 }
 
 TEST_CASE("rational ctor") {
@@ -31,11 +32,8 @@ TEST_CASE("rational ctor") {
 
   CHECK_THROWS(Rational(1, 0));
 
-  testParse("1/2");
-  testParse("1 / 2");
-  testParse("1 /2");
-  testParse("1/ 2");
-  testParse("1/0");
+  CHECK(testParse("1/2"));
+  CHECK(testParse("1/0") == false);
 }
 
 TEST_CASE("rational bool operators") {

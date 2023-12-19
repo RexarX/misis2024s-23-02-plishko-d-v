@@ -19,6 +19,8 @@ public:
   bool operator>=(const Rational& lhs) const { return operator==(lhs) || operator>(lhs); }
   bool operator<=(const Rational& lhs) const { return operator==(lhs) || operator<(lhs); }
 
+  Rational operator-() const noexcept { return { -num_, den_ }; }
+
   Rational& operator+=(const Rational& lhs);
   Rational& operator+=(const std::int64_t& lhs) { return operator+=(Rational(lhs)); }
   Rational& operator-=(const Rational& lhs);

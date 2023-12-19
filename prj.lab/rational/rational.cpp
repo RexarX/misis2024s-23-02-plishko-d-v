@@ -101,14 +101,22 @@ std::ostream& Rational::writeTo(std::ostream& ostrm) const {
 
 std::istream& Rational::readFrom(std::istream& istrm) {
   std::int64_t num(0);
-  char separator(0);
+  char delimiter(0);
   std::int64_t den(1);
-  istrm >> num >> separator >> den;
-  if (istrm.good()) {
-    if (separator == '/') {
+  istrm >> num;
+  istrm.get(delimiter);
+  const std::int64_t trash = istrm.peek();
+  istrm >> den;
+  if (!istrm || trash > '9' || trash < '0') {
+    istrm.setstate(std::ios_base::failbit);
+    return istrm;
+  }
+  if (istrm.good() || istrm.eof()) {
+    if ('/' == delimiter && den > 0) {
       num_ = num;
       den_ = den;
-    } else {
+    }
+    else {
       istrm.setstate(std::ios_base::failbit);
     }
   }
