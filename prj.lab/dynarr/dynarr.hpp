@@ -5,6 +5,7 @@ public:
   DynArr();
   DynArr(const std::ptrdiff_t& rhs);
   DynArr(const DynArr& rhs);
+  DynArr(const DynArr&) = default;
   ~DynArr();
 
   std::ptrdiff_t Size() const { return size_; }
