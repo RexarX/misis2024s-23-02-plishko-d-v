@@ -18,6 +18,8 @@ inline std::istream& operator>>(std::istream& istrm, Complex& rhs) {
   return rhs.readFrom(istrm);
 }
 
+Complex Complex::operator-() const noexcept { return Complex(-re, -im); }
+
 Complex& Complex::operator+=(const Complex& rhs) {
   re += rhs.re;
   im += rhs.im;
