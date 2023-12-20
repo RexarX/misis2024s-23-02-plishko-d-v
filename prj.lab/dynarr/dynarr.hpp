@@ -16,7 +16,7 @@ public:
   void Clear();
   void Print();
 
-  DynArr& operator=(const DynArr&) = default;
+  DynArr& operator=(const DynArr&);
 
   const float& operator[](const std::ptrdiff_t& index) const;
   float& operator[](const std::ptrdiff_t& index);
