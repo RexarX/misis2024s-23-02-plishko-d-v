@@ -4,13 +4,15 @@
 class Rational {
 public:
   Rational() = default;
+  Rational(const Rational&) = default;
   explicit Rational(const std::int64_t num);
   Rational(const std::int64_t num, const std::int64_t den);
   ~Rational() = default;
-  Rational& operator=(const Rational&) = default;
 
   std::int64_t num() const { return num_; }
   std::int64_t den() const { return den_; }
+
+  Rational& operator=(const Rational&) = default;
 
   bool operator==(const Rational& lhs) const { return num_ * lhs.den_ == lhs.num_ * den_; }
   bool operator!=(const Rational& lhs) const { return !operator==(lhs); }
