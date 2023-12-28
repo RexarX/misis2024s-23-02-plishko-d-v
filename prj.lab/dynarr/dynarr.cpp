@@ -72,18 +72,9 @@ void DynArr::Pop_back() {
 
 void DynArr::Erase(const std::ptrdiff_t& index) {
   if (index >= 0 && index < size_) {
-    /*float* newArray = new float[capacity_]();
-    for (std::ptrdiff_t i = 0; i < index; ++i) {
-      newArray[i] = std::move(data_[i]);
-    }
     for (std::ptrdiff_t i = index; i < size_; ++i) {
-      newArray[i] = std::move(data_[i + 1]);
-    }
-    delete[] data_;
-    data_ = newArray;*/
-    /*for (std::ptrdiff_t i = index; i < size_; ++i) {
       data_[i] = data_[i + 1];
-    }*/
+    }
     --size_;
   }
   else { throw std::out_of_range("Index out of range"); }
