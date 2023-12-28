@@ -4,7 +4,7 @@ class DynArr {
 public:
   DynArr();
   DynArr(const std::ptrdiff_t& rhs);
-  DynArr(const DynArr&);
+  DynArr(const DynArr& rhs);
   ~DynArr();
 
   std::ptrdiff_t Size() const { return size_; }
@@ -16,7 +16,7 @@ public:
   void Clear();
   void Print();
 
-  DynArr& operator=(const DynArr&);
+  DynArr& operator=(const DynArr& rhs);
 
   const float& operator[](const std::ptrdiff_t& index) const;
   float& operator[](const std::ptrdiff_t& index);
