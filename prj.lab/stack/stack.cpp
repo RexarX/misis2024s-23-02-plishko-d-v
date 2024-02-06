@@ -10,7 +10,7 @@ StackArr::StackArr()
 }
 
 StackArr::StackArr(const StackArr& lhs)
-  : top_(lhs.top_), capacity_(lhs.capacity_)
+	: top_(lhs.top_), data_(new Complex[lhs.capacity_]()), capacity_(lhs.capacity_)
 {
   std::copy(lhs.data_, lhs.data_ + lhs.top_ + 1, data_);
 }
@@ -22,9 +22,9 @@ StackArr::~StackArr()
 
 StackArr& StackArr::operator=(const StackArr& lhs)
 {
+  if (lhs.capacity_ > capacity_) { ChangeCapacity(lhs.capacity_); }
   std::copy(lhs.data_, lhs.data_ + lhs.top_ + 1, data_);
   top_ = lhs.top_;
-  capacity_ = lhs.capacity_;
   return *this;
 }
 
@@ -54,7 +54,7 @@ const Complex& StackArr::Top()
 
 void StackArr::Push(const Complex& object)
 {
-  if (top_ = capacity_) { ChangeCapacity(2 * capacity_); }
+  if (top_ == capacity_) { ChangeCapacity(2 * capacity_); }
   ++top_;
   data_[top_] = object;
 }
