@@ -1,5 +1,4 @@
-#ifndef COMPLEX_HPP
-#define COMPLEX_HPP
+#pragma once
 
 #include <sstream>
 
@@ -50,5 +49,3 @@ Complex operator+(const double& lhs, const Complex& rhs) { return operator+(Comp
 Complex operator-(const double& lhs, const Complex& rhs) { return operator-(Complex(lhs), rhs); }
 Complex operator*(const double& lhs, const Complex& rhs) { return operator*(Complex(lhs), rhs); }
 Complex operator/(const double& lhs, const Complex& rhs) { return operator/(Complex(lhs), rhs); }
-
-#endif
