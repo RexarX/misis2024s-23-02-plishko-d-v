@@ -7,3 +7,7 @@ add_subdirectory(dynarr)
 add_subdirectory(stack)
 
 add_subdirectory(stacklst)
+
+add_subdirectory(queuelst)
+
+add_subdirectory(queuearr)

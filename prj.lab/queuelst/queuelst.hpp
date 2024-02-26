@@ -5,13 +5,14 @@
 #include <complex/complex.cpp>
 
 
-class StackLst {
+class QueueLst
+{
 public:
-  StackLst() = default;
-  StackLst(const StackLst& lhs);
-  ~StackLst();
+  QueueLst() = default;
+  QueueLst(const QueueLst& lhs);
+  ~QueueLst();
 
-  StackLst& operator=(const StackLst& lhs);
+  QueueLst& operator=(const QueueLst& lhs);
 
   bool IsEmpty() const noexcept;
 
@@ -31,4 +32,5 @@ private:
   };
 
   Node* head_ = nullptr;
+  Node* tail_ = nullptr;
 };
