@@ -38,6 +38,7 @@ void QueueLst::Push(const Complex& value)
   if (!IsEmpty()) { tail_->next = temp; } 
   else { head_ = temp; }
   tail_ = temp;
+  delete temp;
   temp = nullptr;
 }
 
