@@ -37,6 +37,18 @@ BitSet& BitSet::operator=(BitSet&& rhs) noexcept
   return *this;
 }
 
+const bool& BitSet::operator[](const int32_t& index) const
+{
+  if (index < 0) { throw std::out_of_range("Invalid index!"); }
+  return (data_[index / 32] & (1 << (31 - index % 32))) != 0;
+}
+
+bool BitSet::operator[](const int32_t& index)
+{
+  if (index < 0) { throw std::out_of_range("Invalid index!"); }
+  return (data_[index / 32] & (1 << (31 - index % 32))) != 0;
+}
+
 BitSet& BitSet::operator&(const BitSet& rhs)
 {
   for (int32_t i = 0; i < data_.size(); ++i) {
