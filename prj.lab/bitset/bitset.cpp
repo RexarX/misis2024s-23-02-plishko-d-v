@@ -11,10 +11,10 @@ BitSet::BitSet(const BitSet& copy)
 {
 }
 
-BitSet::BitSet(BitSet&& lhs)
-  :data_(std::move(lhs.data_)), size_(lhs.size_)
+BitSet::BitSet(BitSet&& rhs)
+  :data_(std::move(rhs.data_)), size_(rhs.size_)
 {
-  lhs.size_ = 0;
+  rhs.size_ = 0;
 }
 
 BitSet::~BitSet()
@@ -23,17 +23,73 @@ BitSet::~BitSet()
   size_ = 0;
 }
 
-BitSet& BitSet::operator=(const BitSet& lhs) noexcept
+BitSet& BitSet::operator=(const BitSet& rhs) noexcept
 {
-  data_ = lhs.data_;
+  data_ = rhs.data_;
   return *this;
 }
 
-BitSet& BitSet::operator=(BitSet&& lhs) noexcept
+BitSet& BitSet::operator=(BitSet&& rhs) noexcept
 {
-  data_ = std::move(lhs.data_);
-  size_ = lhs.size_;
-  lhs.size_ = 0;
+  data_ = std::move(rhs.data_);
+  size_ = rhs.size_;
+  rhs.size_ = 0;
+  return *this;
+}
+
+BitSet& BitSet::operator&(const BitSet& rhs)
+{
+  for (int32_t i = 0; i < data_.size(); ++i) {
+    data_[i] &= rhs.data_[i];
+  }
+  return *this;
+}
+
+BitSet& BitSet::operator|(const BitSet& rhs)
+{
+  for (int32_t i = 0; i < data_.size(); ++i) {
+    data_[i] |= rhs.data_[i];
+  }
+  return *this;
+}
+
+BitSet& BitSet::operator^(const BitSet& rhs)
+{
+  for (int32_t i = 0; i < data_.size(); ++i) {
+    data_[i] ^= rhs.data_[i];
+  }
+  return *this;
+}
+
+BitSet& BitSet::operator<<(const int32_t& shift)
+{
+  for (int32_t i = 0; i < data_.size(); ++i) {
+    data_[i] = (data_[i] << shift) | (data_[i] >> (32 - shift));
+  }
+  return *this;
+}
+
+BitSet& BitSet::operator>>(const int32_t& shift)
+{
+  for (int32_t i = 0; i < data_.size(); ++i) {
+    data_[i] = (data_[i] >> shift) | (data_[i] << (32 - shift));
+  }
+  return *this;
+}
+
+BitSet& BitSet::operator~()
+{
+  for (int32_t i = 0; i < data_.size(); ++i) {
+    data_[i] = ~data_[i];
+  }
+  return *this;
+}
+
+BitSet& BitSet::operator!()
+{
+  for (int32_t i = 0; i < data_.size(); ++i) {
+    data_[i] != data_[i];
+  }
   return *this;
 }
 
@@ -55,7 +111,7 @@ void BitSet::Set(const int32_t& index, const bool& value)
 uint32_t BitSet::Get(const int32_t& index) const
 {
   if (index < 0) { throw std::out_of_range("Invalid index!"); }
-  return (data_[index / 32] & (1 << (index % 32))) != 0;
+  return (data_[index / 32] & (1 << ( 31 - index % 32))) != 0;
 }
 
 void BitSet::Clear()
