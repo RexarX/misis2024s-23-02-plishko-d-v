@@ -174,7 +174,7 @@ Release/D:/projects/misis2023f-23-check/misis2024s-23-02-plishko-d-v/bin.check/d
 Release/D:/projects/misis2023f-23-check/misis2024s-23-02-plishko-d-v/bin.check/doctest_stacklst_m.exe.exe
 17/20 Test #20: doctest_stacklst_m ...............***Not Run   0.00 sec
 18/20 Test  #8: doctest_rational_m ...............   Passed    0.02 sec
-19/20 Test  #9: doctest_dynarr ...................***Failed    0.02 sec
+19/20 Test  #9: doctest_dynarr ...................***Failed    0.01 sec
 20/20 Test #15: doctest_queuelstpr ...............***Failed    0.01 sec
 
 5% tests passed, 19 tests failed out of 20
