@@ -1,33 +1,34 @@
-#include <cstddef>
+#pragma once
 
-class DynArr {
+#include <cstddef>
+#include <memory>
+
+class DynArr
+{
 public:
   DynArr();
-  DynArr(const std::ptrdiff_t& rhs);
   DynArr(const DynArr& rhs);
-  ~DynArr();
+  DynArr(DynArr&& rhs) noexcept;
+  DynArr(const std::ptrdiff_t size);
+  ~DynArr() = default;
 
-  std::ptrdiff_t Size() const { return size_; }
+  std::ptrdiff_t Size() const noexcept { return size_; }
 
-  void Resize(const std::ptrdiff_t& newSize);
-  void Push_back(const float& object);
-  void Pop_back();
-  void Erase(const std::ptrdiff_t& index);
-  void Clear();
-  void Print();
+  void Resize(const std::ptrdiff_t size);
 
   DynArr& operator=(const DynArr& rhs);
+  DynArr& operator=(DynArr&& rhs) noexcept;
 
-  const float& operator[](const std::ptrdiff_t& index) const;
-  float& operator[](const std::ptrdiff_t& index);
+  const float& operator[](const std::ptrdiff_t index) const;
+  float& operator[](const std::ptrdiff_t index);
 
   bool operator==(const DynArr& rhs) const;
   bool operator!=(const DynArr& rhs) const { return !operator==(rhs); }
 
 private:
-  void ChangeCapacity(const std::ptrdiff_t& newCapacity);
+  void ChangeCapacity(const std::ptrdiff_t capacity);
 
   std::ptrdiff_t size_ = 0;
-  std::ptrdiff_t capacity_ = 1;
-  float* data_ = nullptr;
+  std::ptrdiff_t capacity_ = 2;
+  std::unique_ptr<float[]> data_;
 };

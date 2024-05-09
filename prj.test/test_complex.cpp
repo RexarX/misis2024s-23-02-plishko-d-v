@@ -1,16 +1,13 @@
+#include <complex/complex.hpp>
 #include <iostream>
-#include <complex/complex.cpp>
 
-bool testParse(const std::string& str) {
+bool testParse(const std::string& str) noexcept {
   std::istringstream istrm(str);
   Complex z;
   istrm >> z;
-  if (istrm.good()) {
-    std::cout << "Read success: " << str << " -> " << z << '\n';
-  }
-  else {
-    std::cout << "Read error : " << str << " -> " << z << '\n';
-  }
+  if (istrm.good() || istrm.eof()) { std::cout << "Read Success: "; }
+  else { std::cout << "Read Error: "; }
+  std::cout << "read " << z << " from " << str << '\n';
   return istrm.good();
 }
 

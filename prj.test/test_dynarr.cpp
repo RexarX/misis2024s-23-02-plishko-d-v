@@ -1,84 +1,88 @@
+#include <dynarr/dynarr.hpp>
+
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 
-#include <dynarr/dynarr.cpp>
+TEST_CASE("DynamicArray")
+{
+  DynArr arr;
 
-TEST_CASE("DynamicArray ctor") {
-  DynArr q;
-  DynArr w;
+  CHECK(arr.Size() == 0);
+  CHECK_THROWS(arr[0]);
+  arr.Resize(5);
+  CHECK(arr.Size() == 5);
 
-  CHECK_EQ(q[0], 0.0f);
+  CHECK_THROWS(arr.Resize(-1));
 
-  q.Push_back(10.0f);
+  CHECK_THROWS(arr[6]);
 
-  w = q;
-  CHECK_EQ(w, q);
+  arr[0] = 4;
+  CHECK(arr[0] == doctest::Approx(4));
 
-  CHECK_EQ(10.0f, q[0]);
-  CHECK_EQ(10.0f, w[0]);
+  arr[1] = 6;
+  CHECK(arr[1] == doctest::Approx(6));
+  CHECK(arr[0] == doctest::Approx(4));
+  CHECK(arr[0] != doctest::Approx(arr[1]));
 
-  w.Push_back(1.0f);
-  CHECK(w != q);
+  arr.Resize(8);
+  CHECK_NOTHROW(arr[7]);
+  CHECK(arr[7] == doctest::Approx(0));
 
-  q.Clear();
+  arr.Resize(2);
+  CHECK(arr[1] == doctest::Approx(6));
 
-  CHECK_EQ(q[0], 0.0f);
+  arr.Resize(1);
+  arr[0] = 0;
+  arr.Resize(4);
+  CHECK(arr[0] == doctest::Approx(0));
+  arr[0] = 2.1f;
+  arr[1] = 2;
+  arr[3] = 5;
+  CHECK(arr[3] == doctest::Approx(5));
+  arr.Resize(2);
+  CHECK_THROWS(doctest::Approx(arr[3]));
+  CHECK(arr[1] == doctest::Approx(2));
+  CHECK(arr[0] == doctest::Approx(2.1));
+  arr.Resize(4);
+  CHECK(arr[3] == doctest::Approx(0));
 
-  q.Push_back(10.0f);
+  DynArr arr2(4);
+  CHECK(arr2.Size() == 4);
+  CHECK(arr2[0] == doctest::Approx(0));
+  CHECK(arr2[3] == doctest::Approx(0));
 
-  DynArr e(q);
+  CHECK_NOTHROW(arr.Resize(10000));
+  arr[9999] = 3.789f;
+  CHECK(arr[9999] == doctest::Approx(3.789f));
 
-  CHECK_EQ(q, e);
+  arr.Resize(2);
+  arr[0] = 3.5f;
+  arr[1] = 3.5f;
+  CHECK(arr[0] == doctest::Approx(arr[1]));
+  arr[1] += 2;
+  CHECK(arr[0] != doctest::Approx(arr[1]));
 
-  CHECK_EQ(10.0f, q[0]);
-  CHECK_EQ(10.0f, e[0]);
+  arr[0] = 4.567f;
+  arr[1] = 5.678f;
+  CHECK(arr[0] != arr[1]);
 
-  e.Push_back(1.0f);
-  CHECK(e != q);
-}
+  DynArr arr3(arr);
+  CHECK(arr3[0] == doctest::Approx(arr[0]));
+  CHECK(arr3[1] == doctest::Approx(arr[1]));
 
-TEST_CASE("DynamicArray methods") {
-  DynArr e;
-  CHECK_THROWS(e.Pop_back());
-  
-  e.Push_back(10.0f);
-  e.Push_back(1.0f);
-  e.Push_back(2.0f);
-  e.Push_back(3.0f);
-  CHECK_EQ(10.0f, e[0]);
-  CHECK_EQ(1.0f, e[1]);
-  CHECK_EQ(2.0f, e[2]);
-  CHECK_EQ(3.0f, e[3]);
+  DynArr arr4;
+  arr4 = arr;
+  CHECK(arr4[0] == doctest::Approx(arr[0]));
+  CHECK(arr4[1] == doctest::Approx(arr[1]));
 
-  e.Pop_back();
-  CHECK_EQ(2.0f, e[2]);
-
-  e.Erase(2);
-  e.Push_back(4.0f);
-  CHECK_EQ(4.0f, e[2]);
-
-  e.Clear();
-  CHECK_EQ(0.0f, e.Size());
-
-  e.Resize(10);
-  CHECK_EQ(10, e.Size());
-
-  for (ptrdiff_t i = 0; i < e.Size(); i++) {
-    CHECK_EQ(e[i], 0.0f);
-  }
-
-  e.Resize(2);
-  CHECK_EQ(2, e.Size());
-
-  for (ptrdiff_t i = 0; i < e.Size(); i++) {
-    CHECK_EQ(e[i], 0.0f);
-  }
-
-  CHECK_THROWS(e[100]);
-  CHECK_THROWS(e[-1]);
-
-  CHECK_THROWS(e.Resize(0));
-  CHECK_THROWS(e.Resize(-1));
-
-  CHECK_THROWS(e.Erase(-1));
+  arr4[0] += 2;
+  arr3[0] -= 2;
+  arr4[1] += 1;
+  arr3[1] -= 1;
+  CHECK(arr[0] != doctest::Approx(arr4[0]));
+  CHECK(arr[0] != doctest::Approx(arr3[0]));
+  CHECK(arr4[0] != doctest::Approx(arr3[0]));
+  CHECK(arr[1] != doctest::Approx(arr4[1]));
+  CHECK(arr[1] != doctest::Approx(arr3[1]));
+  CHECK(arr4[1] != doctest::Approx(arr3[1]));
 }

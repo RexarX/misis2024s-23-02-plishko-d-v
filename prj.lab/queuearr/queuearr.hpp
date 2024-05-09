@@ -1,38 +1,35 @@
 #pragma once
 
 #include <cstddef>
-
-#include <complex/complex.cpp>
-
+#include <memory>
+#include <complex/complex.hpp>
 
 class QueueArr
 {
 public:
   QueueArr();
-  QueueArr(const QueueArr& lhs);
-  ~QueueArr();
+  QueueArr(const QueueArr& src);
+  QueueArr(QueueArr&& src) noexcept;
+  ~QueueArr() = default;
 
-  QueueArr& operator=(const QueueArr& lhs);
+  QueueArr& operator=(const QueueArr& src);
+  QueueArr& operator=(QueueArr&& src) noexcept;
 
   bool IsEmpty() const noexcept;
 
+  void Push(const Complex& value);
   void Pop() noexcept;
-
-  void Push(const Complex& val);
+  void Clear();
 
   Complex& Top();
   const Complex& Top() const;
 
-  void Clear() noexcept;
+private:
+  void ChangeCapacity(const std::ptrdiff_t capacity);
 
 private:
-  void ChangeCapacity(const std::ptrdiff_t& newCapacity);
-
-private:
-  std::ptrdiff_t size_ = 0;
+  std::unique_ptr<Complex[]> data_;
+  std::ptrdiff_t head_ = 0;
+  std::ptrdiff_t tail_ = 0;
   std::ptrdiff_t capacity_ = 2;
-  Complex* head_ = nullptr;
-  Complex* tail_ = nullptr;
-
-  Complex* data_ = nullptr;
 };

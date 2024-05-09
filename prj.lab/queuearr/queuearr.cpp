@@ -1,82 +1,112 @@
-#include <queuearr/queuearr.hpp>
-
+#include "queuearr.hpp"
 #include <stdexcept>
 
-
 QueueArr::QueueArr()
-  : data_(new Complex[capacity_]())
+  : data_(std::make_unique<Complex[]>(2))
 {
 }
 
-QueueArr::QueueArr(const QueueArr& lhs)
-  : size_(lhs.size_), capacity_(lhs.capacity_), head_(lhs.head_), tail_(lhs.tail_)
+QueueArr::QueueArr(const QueueArr& src)
+  : head_(0), tail_(0), data_(std::make_unique<Complex[]>(src.head_ - src.tail_)),
+    capacity_(src.head_ - src.tail_)
 {
-  if (data_ == nullptr) { data_ = new Complex[capacity_](); }
-  std::copy(lhs.data_, lhs.data_ + size_, data_);
+  for (uint32_t i = 0; i < capacity_; ++i) {
+    Push(src.data_[(src.tail_ + i) % src.capacity_]);
+  }
 }
 
-QueueArr::~QueueArr()
+QueueArr::QueueArr(QueueArr&& src) noexcept
 {
-  Clear();
+  std::swap(data_, src.data_);
+  std::swap(head_, src.head_);
+  std::swap(tail_, src.tail_);
+  std::swap(capacity_, src.capacity_);
 }
 
-QueueArr& QueueArr::operator=(const QueueArr& lhs)
+QueueArr& QueueArr::operator=(const QueueArr& value)
 {
-  if (data_ == nullptr) { data_ = new Complex[capacity_](); }
-  std::copy(lhs.data_, lhs.data_ + size_, data_);
-  head_ = lhs.head_;
-  tail_ = lhs.tail_;
+  if (this != &value) {
+    if (capacity_ < value.head_ - value.tail_) {
+      Clear();
+      data_ = std::make_unique<Complex[]>((value.head_ - value.tail_) * 2);
+    }
+    head_ = 0;
+    tail_ = 0;
+    for (uint32_t i = 0; i < value.head_ - value.tail_; ++i) {
+      Push(value.data_[(value.tail_ + i) % value.capacity_]);
+    }
+  }
   return *this;
 }
 
-void QueueArr::ChangeCapacity(const std::ptrdiff_t& newCapacity)
+QueueArr& QueueArr::operator=(QueueArr&& value) noexcept
 {
-  Complex* newQueueArr = new Complex[newCapacity]();
-  if (newCapacity <= size_) { size_ = newCapacity; }
-  std::move(data_, data_ + size_, newQueueArr);
-  delete[] data_;
-  data_ = newQueueArr;
-  capacity_ = newCapacity;
-  tail_ = &data_[size_];
+  if (this != &value) {
+    data_ = std::move(value.data_);
+    value.data_.release();
+    head_ = value.head_;
+    tail_ = value.tail_;
+    capacity_ = value.capacity_;
+    value.head_ = 0;
+    value.tail_ = 0;
+    value.capacity_ = 0;
+  }
+  return *this;
 }
 
 bool QueueArr::IsEmpty() const noexcept
 {
-  return 0 == size_;
+  return head_ == tail_;
 }
 
 void QueueArr::Push(const Complex& value)
 {
-  if (size_ - 1 == capacity_) { ChangeCapacity(2 * capacity_); }
-  ++size_;
-  data_[size_ - 1] = value;
-  tail_ = &data_[size_ - 1];
-  if (size_ == 1) { head_ = &data_[size_ - 1]; }
+  if (!IsEmpty() && (head_ % capacity_) == (tail_ % capacity_)) {
+    ChangeCapacity(capacity_ * 2);
+  }
+  *(data_.get() + (head_ % capacity_)) = value;
+  ++head_;
 }
 
 void QueueArr::Pop() noexcept
 {
   if (!IsEmpty()) {
-    --size_;
-    tail_ = &data_[size_ - 1];
+    ++tail_;
   }
-  tail_ = nullptr;
-  head_ = nullptr;
 }
 
 Complex& QueueArr::Top()
 {
-  if (IsEmpty()) { throw std::logic_error("QueueArr - try get top form empty queue."); }
-  return data_[size_];
+  if (IsEmpty()) {
+    throw std::out_of_range("Cannot get an element of empty queue!");
+  }
+  return *(data_.get() + (tail_ % capacity_));
 }
 
 const Complex& QueueArr::Top() const
 {
-  if (IsEmpty()) { throw std::logic_error("QueueArr - try get top form empty queue."); }
-  return data_[size_];
+  if (IsEmpty()) {
+    throw std::out_of_range("Cannot get an element of empty queue!");
+  }
+  return *(data_.get() + (tail_ % capacity_));
 }
 
-void QueueArr::Clear() noexcept
+void QueueArr::ChangeCapacity(const std::ptrdiff_t capacity)
+{
+  if (capacity <= 0) { throw std::invalid_argument("Positive capacity is required!"); }
+  std::unique_ptr<Complex[]> newData = std::make_unique<Complex[]>(capacity);
+  for (uint32_t i = 0; i < capacity_; ++i) {
+    newData[i] = data_[(tail_ + i) % capacity_];
+  }
+  data_.reset();
+  data_ = std::move(newData);
+  newData.release();
+  head_ -= tail_;
+  tail_ = 0;
+  capacity_ = capacity;
+}
+
+void QueueArr::Clear()
 {
   while (!IsEmpty()) {
     Pop();
