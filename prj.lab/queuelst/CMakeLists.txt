@@ -7,6 +7,6 @@ target_include_directories(queuelst PUBLIC
   $<INSTALL_INTERFACE:include>
 )
 
-target_link_libraries(queuelst complex)
-
 install(TARGETS queuelst)
+
+target_link_libraries(queuelst complex)

@@ -13,7 +13,7 @@ public:
   BitSet(BitSet&& rhs);
   ~BitSet();
 
-  BitSet& operator=(const BitSet& rhs);
+  BitSet& operator=(const BitSet& rhs) noexcept;
   BitSet& operator=(BitSet&& rhs) noexcept;
 
   const bool& operator[](const int32_t& index) const;

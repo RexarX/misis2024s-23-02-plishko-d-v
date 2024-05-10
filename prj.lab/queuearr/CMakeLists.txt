@@ -7,6 +7,6 @@ target_include_directories(queuearr PUBLIC
   $<INSTALL_INTERFACE:include>
 )
 
-target_link_libraries(queuearr complex)
-
 install(TARGETS queuearr)
+
+target_link_libraries(queuearr complex)

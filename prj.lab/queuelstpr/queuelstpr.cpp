@@ -1,24 +1,20 @@
-#include <queuelstpr/queuelstpr.hpp>
+#include "queuelstpr.hpp"
 
-#include <algorithm>
 #include <stdexcept>
 
-QueueLstPr::QueueLstPr(const QueueLstPr& lhs)
+QueueLstPr::QueueLstPr(const QueueLstPr& copy)
 {
-  Node* temp = lhs.head_;
+  Node* temp = copy.head_;
   while (temp != nullptr) {
     Push(temp->val);
     temp = temp->next;
   }
 }
 
-QueueLstPr::QueueLstPr(const QueueLstPr&& lhs)
+QueueLstPr::QueueLstPr(QueueLstPr&& src) noexcept
 {
-  Node* temp = lhs.head_;
-  while (temp != nullptr) {
-    Push(temp->val);
-    temp = temp->next;
-  }
+  std::swap(head_, src.head_);
+  std::swap(tail_, src.tail_);
 }
 
 QueueLstPr::~QueueLstPr()
@@ -26,13 +22,26 @@ QueueLstPr::~QueueLstPr()
   Clear();
 }
 
-QueueLstPr& QueueLstPr::operator=(const QueueLstPr& lhs)
+QueueLstPr& QueueLstPr::operator=(const QueueLstPr& copy)
 {
-  Clear();
-  Node* temp = (lhs.head_);
-  while (temp != nullptr) {
-    Push(temp->val);
-    temp = temp->next;
+  if (this != &copy) {
+    Clear();
+    Node* temp = copy.head_;
+    while (temp != nullptr) {
+      Push(temp->val);
+      temp = temp->next;
+    }
+  }
+  return *this;
+}
+
+QueueLstPr& QueueLstPr::operator=(QueueLstPr&& src) noexcept
+{
+  if (this != &src) {
+    head_ = src.head_;
+    tail_ = src.tail_;
+    src.head_ = nullptr;
+    src.tail_ = nullptr;
   }
   return *this;
 }
@@ -42,43 +51,41 @@ bool QueueLstPr::IsEmpty() const noexcept
   return nullptr == head_;
 }
 
-void QueueLstPr::Push(const float& value)
+void QueueLstPr::Push(const float value)
 {
-  Node* temp = head_;
-  if (!IsEmpty()) {
-    while (tail_->next != nullptr) {
-      if (temp->val > tail_->val) {
+  if (IsEmpty()) { head_ = new Node{ value, head_ }; }
+  else {
+    if (head_->val > value) { head_ = new Node{ value, head_ }; }
+    else {
+      Node* temp = head_;
+      while (temp->next != nullptr && temp->next->val < value) {
+        temp = temp->next;
       }
-      else if (temp->val < tail_->val) {
-      }
+      temp->next = new Node{ value, temp->next };
     }
   }
-  else { head_ = (temp); }
-  tail_ = (temp);
-  delete temp;
-  temp = nullptr;
 }
 
 void QueueLstPr::Pop() noexcept
 {
   if (!IsEmpty()) {
-    Node* temp = (head_);
+    Node* temp = head_;
     head_ = head_->next;
-    if (temp == tail_) { tail_ = (nullptr); }
+    if (temp == tail_) { tail_ = nullptr; }
+
     delete temp;
-    temp = nullptr;
   }
 }
 
-float& QueueLstPr::Top()
+float QueueLstPr::Top()
 {
-  if (IsEmpty()) { throw std::logic_error("QueueLstPr - try get top form empty queue."); }
+  if (IsEmpty()) { throw std::logic_error("Queue is empty!"); }
   return head_->val;
 }
 
-const float& QueueLstPr::Top() const
+const float QueueLstPr::Top() const
 {
-  if (IsEmpty()) { throw std::logic_error("QueueLstPr - try get top form empty queue."); }
+  if (IsEmpty()) { throw std::logic_error("Queue is empty!"); }
   return head_->val;
 }
 

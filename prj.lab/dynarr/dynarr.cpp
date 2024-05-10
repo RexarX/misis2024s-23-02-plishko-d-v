@@ -1,4 +1,5 @@
-#include <dynarr/dynarr.hpp>
+#include "dynarr.hpp"
+
 #include <iostream>
 #include <stdexcept>
 

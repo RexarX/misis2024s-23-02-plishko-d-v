@@ -7,6 +7,4 @@ target_include_directories(queuelstpr PUBLIC
   $<INSTALL_INTERFACE:include>
 )
 
-target_link_libraries(queuelstpr complex)
-
 install(TARGETS queuelstpr)

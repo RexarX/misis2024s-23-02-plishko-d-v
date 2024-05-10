@@ -126,7 +126,7 @@ uint32_t BitSet::Get(const int32_t& index) const
   return (data_[index / 32] & (1 << ( 31 - index % 32))) != 0;
 }
 
-void BitSet::Clear()
+void BitSet::Clear() noexcept
 {
   data_.clear();
   size_ = 0;

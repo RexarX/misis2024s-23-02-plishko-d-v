@@ -1,8 +1,9 @@
 #pragma once
 
+#include <complex/complex.hpp>
+
 #include <cstddef>
 #include <memory>
-#include <complex/complex.hpp>
 
 class QueueArr
 {

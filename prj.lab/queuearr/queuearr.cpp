@@ -1,8 +1,9 @@
 #include "queuearr.hpp"
+
 #include <stdexcept>
 
 QueueArr::QueueArr()
-  : data_(std::make_unique<Complex[]>(2))
+  : data_(std::make_unique<Complex[]>(capacity_))
 {
 }
 
