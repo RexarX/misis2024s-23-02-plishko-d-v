@@ -1,8 +1,6 @@
-CMake Error at prj.cw/CMakeLists.txt:1 (add_subdirectory):
-  The source directory
+CMake Warning:
+  Manually-specified variables were not used by the project:
 
-    D:/projects/misis2023f-23-check/misis2024s-23-02-plishko-d-v/prj.cw/VoxelCraft
-
-  does not contain a CMakeLists.txt file.
+    BUILD_WITH_SAMPLES
 
 
