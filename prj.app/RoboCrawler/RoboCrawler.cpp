@@ -11,7 +11,7 @@ RoboCrawler::RoboCrawler(const std::string& inputPath, const std::string& output
 
 RoboCrawler::~RoboCrawler()
 {
-  for (const auto command : m_Commands) {
+  for (auto command : m_Commands) {
     delete command;
   }
 
@@ -70,11 +70,12 @@ void RoboCrawler::AddCommand()
     m_Commands.push_back(new GoSouth(lhs_value));
     m_Commands.back()->Execute(m_Position.first, m_Position.second);
   } else if (command == "RE") {
-    m_Commands.pop_back();
-    m_Position = { m_Position.first - m_Commands.back()->GetDistance().first,
-                   m_Position.second - m_Commands.back()->GetDistance().second };
-  }
-  else {
+    for (uint32_t i = 0; i < lhs_value; ++i) {
+      m_Commands.pop_back();
+      m_Position.first -= m_Commands.back()->GetDistance().first;
+      m_Position.second -= m_Commands.back()->GetDistance().second;
+    }
+  } else {
     PrintError("Unknown command: \"" + command + "\"!");
     m_Stop = true;
     return;
@@ -83,7 +84,7 @@ void RoboCrawler::AddCommand()
 
 void RoboCrawler::ReadLineFromFile() noexcept
 {
-  if (!IsEndOfFile() && std::getline(m_Input, m_InputString)) { AddCommand(); }
+  if (!m_Input.eof() && std::getline(m_Input, m_InputString)) { AddCommand(); }
   else { m_Stop = true; }
 }
 

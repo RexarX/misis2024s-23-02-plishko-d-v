@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <fstream>
-#include <queue>
+#include <deque>
 #include <string>
 
 class RoboCrawler
@@ -22,11 +22,7 @@ public:
 
   std::pair<double, double>& GetPosition() noexcept { return m_Position; }
 
-  std::ifstream& GetInputStream() noexcept { return m_Input; }
-
   bool IsStop() noexcept { return m_Stop; }
-
-  bool IsEndOfFile() noexcept { return m_Input.eof(); }
 
 private:
   void PrintError(std::string_view error) noexcept;
