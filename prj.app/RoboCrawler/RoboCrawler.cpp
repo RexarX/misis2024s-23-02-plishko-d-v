@@ -11,10 +11,6 @@ RoboCrawler::RoboCrawler(const std::string& inputPath, const std::string& output
 
 RoboCrawler::~RoboCrawler()
 {
-  for (auto command : m_Commands) {
-    delete command;
-  }
-
   m_Input.close();
   m_Output.close();
 }
@@ -58,22 +54,25 @@ void RoboCrawler::AddCommand()
   if (command == "GO") {
     WriteToFile(m_Position.first + lhs_value, m_Position.second + rhs_value);
   } else if (command == "GW") {
-    m_Commands.push_back(new GoWest(lhs_value));
+    m_Commands.push_back(std::make_unique<GoWest>(GoWest(lhs_value)));
     m_Commands.back()->Execute(m_Position.first, m_Position.second);
   } else if (command == "GE") {
-    m_Commands.push_back(new GoEast(lhs_value));
+    m_Commands.push_back(std::make_unique<GoEast>(GoEast(lhs_value)));
     m_Commands.back()->Execute(m_Position.first, m_Position.second);
   } else if (command == "GN") {
-    m_Commands.push_back(new GoNorth(lhs_value));
+    m_Commands.push_back(std::make_unique<GoNorth>(GoNorth(lhs_value)));
     m_Commands.back()->Execute(m_Position.first, m_Position.second);
   } else if (command == "GS") {
-    m_Commands.push_back(new GoSouth(lhs_value));
+    m_Commands.push_back(std::make_unique<GoSouth>(GoSouth(lhs_value)));
     m_Commands.back()->Execute(m_Position.first, m_Position.second);
   } else if (command == "RE") {
+    if (lhs_value > m_Commands.size()) {
+      PrintError("RE value in bigger than commands pool!\n");
+    }
     for (uint32_t i = 0; i < lhs_value; ++i) {
-      m_Commands.pop_back();
       m_Position.first -= m_Commands.back()->GetDistance().first;
       m_Position.second -= m_Commands.back()->GetDistance().second;
+      m_Commands.pop_back();
     }
   } else {
     PrintError("Unknown command: \"" + command + "\"!");

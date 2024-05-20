@@ -3,7 +3,7 @@
 #include <utility>
 #include <fstream>
 
-class Command
+class ICommand
 {
 public:
   virtual void Execute(double& x, double& y) = 0;
@@ -13,7 +13,7 @@ public:
 
 //Move commands
 
-class MoveCommand : public Command
+class IMoveCommand : public ICommand
 {
 public:
   virtual void Execute(double& x, double& y) override {};
@@ -24,7 +24,7 @@ private:
   std::pair<double, double> m_Distance;
 };
 
-class GoWest: public MoveCommand
+class GoWest: public IMoveCommand
 {
 public:
   GoWest(const double distance);
@@ -37,7 +37,7 @@ private:
   std::pair<double, double> m_Distance;
 };
 
-class GoEast: public MoveCommand
+class GoEast: public IMoveCommand
 {
 public:
   GoEast(const double distance);
@@ -50,7 +50,7 @@ private:
   std::pair<double, double> m_Distance;
 };
 
-class GoNorth: public MoveCommand
+class GoNorth: public IMoveCommand
 {
 public:
   GoNorth(const double distance);
@@ -63,7 +63,7 @@ private:
   std::pair<double, double> m_Distance;
 };
 
-class GoSouth : public MoveCommand
+class GoSouth : public IMoveCommand
 {
 public:
   GoSouth(const double distance);

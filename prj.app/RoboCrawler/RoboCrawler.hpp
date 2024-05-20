@@ -6,6 +6,7 @@
 #include <fstream>
 #include <deque>
 #include <string>
+#include <memory>
 
 class RoboCrawler
 {
@@ -28,7 +29,7 @@ private:
   void PrintError(std::string_view error) noexcept;
 
 private:
-  std::deque<Command*> m_Commands;
+  std::deque<std::unique_ptr<ICommand>> m_Commands;
   std::pair<double, double> m_Position = { 0.0, 0.0 };
 
   std::ifstream m_Input;
