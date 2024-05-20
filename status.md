@@ -1,11 +1,11 @@
-CHECK: 20240519-225538
+CHECK: 20240520-084259
 STATUS: lab complex - test-ok
 STATUS: lab complex_io - test-ok
 STATUS: lab complex_m - test-ok
 ERROR: lab rational - test build failed
 STATUS: lab rational_io - test-failed
 STATUS: lab rational_m - test-ok
-STATUS: lab dynarr - test-ok
+STATUS: lab dynarr - test-failed
 STATUS: lab dynarr_m - test-ok
 ERROR: lab stackarr - test build failed
 ERROR: lab stackarr_m - test build failed
